@@ -1,5 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content%}
-
+{% load static %}
+<style>
+    #home {
+        border-bottom: 4px solid black;
+        padding-top: 5px;
+    }
+    #tran_home:hover {
+        color:black;
+    }
+</style>
+<video muted autoplay loop width="100%" style="z-index:-1;">
+    <source src="{% static '노트북.mp4' %}" type="video/mp4">
+    <strong>Your browser does not support the video tag</strong>
+</video>    
 {% endblock %}
