@@ -11,4 +11,33 @@
         color:black;
     }
 </style>
+<div>
+    {% if user.is_authenticated %}
+    <form action="{% url 'recruit' %}" method="post">
+        {%csrf_token%}
+        <table>
+            {{form.as_table}}
+        </table>
+        <button type="submit">제출</button>
+    </form>
+    {% endif %}
+</div>
+
+<div>
+    {% if not user.is_authenticated %}
+        {% if recruit_url %}
+            <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+                <a href="{{recruit_url.url}}" target="_blank">
+                    <div class="card-header">지원하기!</div>
+                    <div class="card-body">
+                      <p class="card-text">지원하러가기</p>
+                    </div>
+                </a>
+            </div>
+        {% else %}
+            <h1>멋쟁이 사자처럼 Recruitment</h1>
+            <p>현재 모집기간이 아닙니다.</p>
+        {% endif %}
+    {% endif %}
+</div>
 {% endblock %}
