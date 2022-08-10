@@ -16,6 +16,8 @@ class Post(models.Model):
 
 class Recruit(models.Model):
     url = models.CharField(max_length=500)
+    start_date = models.DateTimeField(blank=True, null=True)
+    end_date = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
         return self.url
