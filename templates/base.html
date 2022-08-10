@@ -13,8 +13,8 @@
         }
         header {
             background-color: white;
-            padding: 0 12%;
-            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.16);
+            padding: 0 11vw;
+            box-shadow: 0px 0px 1.5vh rgba(0, 0, 0, 0.16);
             z-index: 5;
             top:0;
             position: fixed;
@@ -22,6 +22,7 @@
             right: 0;
             display:flex;
             justify-content: space-around;
+            height: 7.5vh;
         }
         .menu {
             border: 0;
@@ -33,10 +34,9 @@
             text-decoration: none;
         }
         .tran {
-            font-size: 18px;
+            font-size: 1.6vw;
             display:flex;
             align-content:center;
-            padding-bottom: 1px;
         }
         .tran:hover {
             color: rgb(238, 154, 29);
@@ -44,11 +44,11 @@
     </style>
 </head>
 <body>
-    <div style="height: 60px;">
+    <div style="height: 6.5vh;">
         <header>
             <div style="flex-grow:3;">
                 <a href="{% url 'home' %}">
-                    <img src="{% static '멋사로고.png' %}" width="44" height="46" style="margin-top: 7px;">
+                    <img src="{% static '멋사로고.png' %}" style="width:4vw;height:6vh;">
                 </a>    
             </div>
             <div style="flex-grow:2; display:flex; justify-content:space-between;">
@@ -59,7 +59,7 @@
                 </button>
                 <button class="menu" id="alumni">
                     <a href="{% url 'alumni' %}" class="tran" id="tran_alumni">
-                        <strong>Almuni</strong>
+                        <strong>Alumni</strong>
                     </a>
                 </button>
                 <button class="menu" id="recruit">
