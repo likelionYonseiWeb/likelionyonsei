@@ -10,13 +10,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>멋쟁이사자처럼 연세대학교</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
         body {
             margin:0;
         }
         header {
             background-color: white;
             padding: 0 11vw;
-            box-shadow: 0px 0px 1.5vh rgba(0, 0, 0, 0.16);
+            box-shadow: 0px 0px 1.5vw rgba(0, 0, 0, 0.16);
             z-index: 5;
             top:0;
             position: fixed;
@@ -24,54 +26,54 @@
             right: 0;
             display:flex;
             justify-content: space-around;
-            height: 7.5vh;
+            height: 5vw;
         }
         .menu {
             border: 0;
             background-color: transparent;
-            height: 60px;
+            height: 5vw;
         }
         a {
             color: inherit;
             text-decoration: none;
         }
         .tran {
-            font-size: 1.6vw;
+            font-size: 1.3vw;
             display:flex;
             align-content:center;
         }
         .tran:hover {
-            color: rgb(238, 154, 29);
+            color: #F39926;
         }
     </style>
 </head>
 <body>
-    <div style="height: 6.5vh;">
+    <div style="height: 5vw;">
         <header>
             <div style="flex-grow:3;">
-                <a href="{% url 'home' %}">
-                    <img src="{% static '멋사로고.png' %}" style="width:4vw;height:6vh;">
+                <a href="{% url 'home' %}" style="height: 5vw;display:flex;">
+                    <img src="{% static '멋사로고.png' %}" style="width:3.7vw;height:3.9vw; margin:auto 0;">
                 </a>    
             </div>
             <div style="flex-grow:2; display:flex; justify-content:space-between;">
                 <button class="menu" id="home">
                     <a href="{% url 'home' %}" class="tran" id="tran_home">
-                        <strong>Home</strong>
-                    </a>
+                        <strong>HOME</strong>
+                    </a>    
                 </button>
                 <button class="menu" id="alumni">
                     <a href="{% url 'alumni' %}" class="tran" id="tran_alumni">
-                        <strong>Alumni</strong>
+                        <strong>ALUMNI</strong>
                     </a>
                 </button>
                 <button class="menu" id="recruit">
                     <a href="{% url 'recruit' %}" class="tran" id="tran_recruit">
-                        <strong>Recruit</strong>
+                        <strong>RECRUIT</strong>
                     </a>
                 </button>
                 <button class="menu" id="contact">
                     <a href="{% url 'contact' %}" class="tran" id="tran_contact">
-                        <strong>Contact</strong>
+                        <strong>CONTACT</strong>
                     </a>
                 </button>
             </div>
