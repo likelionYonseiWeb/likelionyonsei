@@ -47,6 +47,19 @@
     }
     .hideme {
         opacity: 0;
+        animation: fadein2 10s;
+    }
+    @keyframes fadein2 {
+        from {
+            transform: translateY(10vw);
+            
+        }
+        to {
+            transform: 0;
+        }
+    }
+    .apple {
+        opacity: 1;
     }
 </style>
 
@@ -107,21 +120,69 @@
                 var bottom_of_window = $(window).scrollTop() + $(window).height();
 
                 if( bottom_of_window > bottom_of_object/2 ){
-                    $(this).animate({'opacity':'1'}, 1800);
+                    $(this).animate({'opacity':'1', 'animation':'fadein2'}, 1800);
                 }
             }); 
         });
     });
+
+    var animation = function () {
+        var items, winH;
+        
+        var initModule = function () {
+            items = document.querySelectorAll(".apple");
+            winH = window.innerHeight;
+            _addEventHandlers();
+        }
+        
+        var _addEventHandlers = function () {
+            window.addEventListener("scroll", _checkPosition);
+            window.addEventListener("load", _checkPosition);
+            window.addEventListener("resize", initModule);
+        };
+        
+        var _checkPosition = function () {
+            for (var i = 0; i < items.length; i++) {
+                var posFromTop = items[i].getBoundingClientRect().top;
+                if (winH > posFromTop) {
+                    items[i].classList.add("apple");
+                }
+            }
+        }
+        
+        return {
+            init: initModule
+        }
+    }
+    
+    animation().init();
 </script>
 
-<!-- 파트3: 커리큘럼 & 일정 -->
-<div style="color:white;background-color: #182655; height: 500px;"></div>
+<!-- 파트3: 커리큘럼 -->
+<div style="color:white;background-color: #182655; height: 500px; padding: 5vw 6vw;">
+    <div style="text-align: center;font-family:Arial; font-weight:bold;font-size: 3vw;">CURRICULUM</div>
+    <div style="display:flex;">
+        <div style="color:white; flex-grow: 1;">2월~3월</div>
+        <div style="flex-grow:2;background-color: white;color:black;">신입 기수 모집</div>
+    </div>
+    <div>
+        <div style="color:white;">3~6월</div>
+    </div>
+    <div>
+        <div style="color:white;">7월~</div>
+    </div>
+</div>
 
 <!-- 파트4: 멋사인 회사(창업/취업) 목록 -->
-<div style="color:white;background-image: linear-gradient(#182655,#F39926 10%); height: 500px;"></div>
+<div style="color:white;background-color: #F39926; height: 500px;">
+    <div style="font-size:4vw;">Found</div>
+    <br>
+    <br>
+    <div style="font-size:4vw;">Work in</div>
+</div>
 
 <!-- 파트5: 프로젝트 목록 -->
-<div style="color:white;background-image: linear-gradient(#F39926, white 10%); height: 500px;"></div>
+<div style="color:white;background-color: white; height: 500px;"></div>
 
 <!-- footer -->
 
