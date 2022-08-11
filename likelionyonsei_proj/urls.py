@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from likelionyonsei_app.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +25,8 @@ urlpatterns = [
     path('alumni/', alumni, name="alumni"),
     path('recruit/', recruit, name="recruit"),
     path('contact/', contact, name="contact"),
-]
+    path('add_member/', add_member, name="add_member"),
+    path('add_founded/', add_founded, name="add_founded"),
+    path('add_company/', add_company, name="add_company"),
+    path('add_project/', add_project, name="add_project"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
