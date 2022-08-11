@@ -118,10 +118,102 @@
 <div style="color:white;background-color: #182655; height: 500px;"></div>
 
 <!-- 파트4: 멋사인 회사(창업/취업) 목록 -->
-<div style="color:white;background-image: linear-gradient(#182655,#F39926 10%); height: 500px;"></div>
+<div style="color:white;background-image: linear-gradient(#182655,#F39926 10%); height: 500px;">
+    
+    <!-- 창업 회사 목록 추가 -->
+    {% if user.is_authenticated %}
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#foundedModal">
+        창업 목록 추가
+    </button>
+    <div class="modal fade" id="foundedModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content" style="color:black;">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">창업 목록 추가</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{% url 'add_founded' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <table>
+                        {{founded_form.as_table}}
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">추가하기</button>
+                </div>
+            </form>
+          </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- 취업 회사 목록 추가 -->
+    {% if user.is_authenticated %}
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#companyModal">
+        취업 목록 추가
+    </button>
+    <div class="modal fade" id="companyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content" style="color:black;">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">취업 목록 추가</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{% url 'add_company' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <table>
+                        {{company_form.as_table}}
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">추가하기</button>
+                </div>
+            </form>
+          </div>
+        </div>
+    </div>
+    {% endif %}
+
+
+</div>
 
 <!-- 파트5: 프로젝트 목록 -->
-<div style="color:white;background-image: linear-gradient(#F39926, white 10%); height: 500px;"></div>
+<div style="color:white;background-image: linear-gradient(#F39926, white 10%); height: 500px;">
+
+    <!-- 프로젝트 목록 추가 -->
+    {% if user.is_authenticated %}
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal">
+        프로젝트 목록 추가
+    </button>
+    <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content" style="color:black;">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">프로젝트 목록 추가</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{% url 'add_project' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <table>
+                        {{project_form.as_table}}
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">추가하기</button>
+                </div>
+            </form>
+          </div>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
 
 <!-- footer -->
 

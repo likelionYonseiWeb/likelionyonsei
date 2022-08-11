@@ -1,15 +1,26 @@
 from django.shortcuts import render, redirect
 from .models import *
-from .forms import RecruitForm
+from .forms import *
 from django.utils import timezone
 
 # Create your views here.
 
 def home(request):
-    return render(request, 'home.html')
+    founded_form = FoundedForm()
+    company_form = CompanyForm()
+    project_form = ProjectForm()
+
+    ctx = {
+        'founded_form':founded_form, 
+        'company_form':company_form,
+        'project_form':project_form,
+    }
+    return render(request, 'home.html', ctx)
 
 def alumni(request):
-    return render(request, 'alumni.html')
+    members = Member.objects.all()
+    member_form = MemberForm()
+    return render(request, 'alumni.html', {'members':members, 'member_form':member_form,})
 
 def recruit(request):
     if (request.method == 'POST'):
@@ -30,3 +41,31 @@ def recruit(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+def add_member(request):
+    if (request.method == 'POST'):
+        form = MemberForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    return redirect('alumni')
+
+def add_founded(request):
+    if (request.method == 'POST'):
+        form = FoundedForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    return redirect('home')
+
+def add_company(request):
+    if (request.method == 'POST'):
+        form = CompanyForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    return redirect('home')
+
+def add_project(request):
+    if (request.method == 'POST'):
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    return redirect('home')
