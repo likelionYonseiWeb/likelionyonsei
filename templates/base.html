@@ -46,14 +46,16 @@
         }
     </style>
 </head>
-<body>
+<body style="height: 100%;">
     <!-- 상단 navbar -->
     <div style="height: 5vw;">
         <header>
             <div style="flex-grow:3;">
-                <a href="{% url 'home' %}" style="height: 5vw;display:flex;">
-                    <img src="{% static '멋사로고.png' %}" style="width:3.7vw;height:3.9vw; margin:auto 0;">
-                </a>    
+                <button style="border:0;background-color: white;height: 5vw;">
+                    <a href="{% url 'home' %}" style="height: 5vw;display:flex;">
+                        <img src="{% static '멋사로고.png' %}" style="width:3.7vw;height:3.9vw; margin:auto 0;">
+                    </a>        
+                </button>
             </div>
             <div style="flex-grow:2; display:flex; justify-content:space-between;">
                 <button class="menu" id="home">

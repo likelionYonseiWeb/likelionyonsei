@@ -47,20 +47,53 @@
     }
     .hideme {
         opacity: 0;
-        animation: fadein2 10s;
     }
-    @keyframes fadein2 {
-        from {
-            transform: translateY(10vw);
-            
-        }
-        to {
-            transform: 0;
-        }
+    .detail {
+        padding: 1vw;
+        font-weight: bold;
+        color:black;
+        background-color: white;
+        font-size:1.8vw;
+        border-radius: 1vw;
     }
-    .apple {
-        opacity: 1;
+    #td_div {
+        margin: 1vw 0;
     }
+    #td_title {
+        background-color: #F39926;
+    }
+    .curriculum {
+        text-align: center;
+        width: 100%;
+        font-size: 1.8vw;
+        border-spacing: 2vw;
+        border-collapse: separate;
+        margin-top: 1vw;
+    }
+    #td_month {
+        text-align:left;
+        background-color: #182655;
+        color:white;
+    }
+    #td_box {
+        width: 28%;
+    }
+    .company_list {
+        background-color:white;
+        margin: 2.2vw 10vw 7vw 10vw;
+        border-radius: 1vw;
+        padding-top: 4.3vw;
+        height: 38vw;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        -webkit-tap-highlight-color: transparent;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        width: 69vw;
+    }
+    .slick-sample{width: 100%;height: 200px;}
+    .slick-sample .slick-list{height: 100%;}
 </style>
 
 <!-- 파트1: 영상 & 문구 -->
@@ -89,20 +122,112 @@
 
 <!-- 파트2: 멋쟁이사자처럼 소개 -->
 <div style="color:white;background-color: black;padding: 4vw 6vw;">
-    <div style="display:flex;">
-        <span style="font-size:3vw;font-weight: bold;padding-right: 2.5vw;font-family:Arial;">LIKE LION?</span>
+    <div style="display:flex; margin-bottom: 4vw;margin-top: 1.5vw;">
+        <span style="font-size:3vw;font-weight: bold;padding-right: 2.5vw;font-family:Arial;">LIKE LION</span>
         <hr style="border:1px solid white;flex-grow:1; margin-top: 2vw;">
     </div>
-    <div class="hideme" style="text-align: center;font-size: 2.2vw;font-weight: bold; margin-top:4vw;">
+    <div class="hideme" style="text-align: center;font-size: 2.2vw;font-weight: bold;">
         <div style="margin-bottom:2.5vw;"><span style="color:#F39926">멋쟁이 사자처럼</span>은</div>
         <div style="margin-bottom:2.5vw;">국내 40여개 대학을 대상으로 <span style="color:#F39926">프로그래밍 교육</span>을 하며</div>
         <div style="margin-bottom:5vw;">유수의 <span style="color:#F39926">IT</span> 기업들을 <span style="color:#F39926">창업</span>한 인재들을 배출했습니다 </div>
-        <div style="display:flex; margin-bottom: 2.5vw; justify-content: space-around; padding:0 4vw;">
+        <div style="display:flex; justify-content: space-around; padding:0 4vw;">
             <img src="{% static '쿼타북.png' %}" class="intro_img">
             <img src="{% static '뱅크샐러드.png' %}" class="intro_img">
             <img src="{% static '탈잉.jpg' %}" class="intro_img" style="width:5.5vw;"> 
             <img src="{% static '슬리드.png' %}" class="intro_img">
             <img src="{% static '비프로.png' %}" class="intro_img">
+        </div>
+    </div>
+
+<!-- 파트3: 멋사인 회사(창업/취업) 목록 -->
+    <div style="display:flex; margin-top: 8vw;">
+        <span style="font-size:3vw;font-weight: bold;padding-right: 2.5vw;font-family:Arial;">IN YONSEI</span>
+        <hr style="border:1px solid white;flex-grow:1; margin-top: 2vw;">
+    </div>
+
+    <!-- 창업/취업 회사 목록 추가 -->
+    {% if user.is_authenticated %}
+        <div style="display: flex; justify-content:center;">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#foundedModal" style="margin: 2vw 2vw 0 2vw;">
+                창업 목록 추가
+            </button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#companyModal" style="margin: 2vw 2vw 0 2vw;">
+                취업 목록 추가
+            </button>    
+        </div>
+
+        <!-- 창업 회사 추가 -->
+        <div class="modal fade" id="foundedModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content" style="color:black;">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">창업 목록 추가</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{% url 'add_founded' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <table>
+                            {{founded_form.as_table}}
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">추가하기</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+
+        <!-- 취업 회사 추가 -->
+        <div class="modal fade" id="companyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content" style="color:black;">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">취업 목록 추가</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{% url 'add_company' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="modal-body" >
+                        <table>
+                            {{company_form.as_table}}
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">추가하기</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+    {% endif %}
+    
+    <div style="margin-top:4vw;">
+        <!-- 창업 회사 목록 -->
+        <div style="color:#F39926;font-family:Arial;font-size:2.2vw;font-weight: bolder;text-align: center;">FOUND</div>
+        <div class="company_list">
+            {% for found in founded_list %}
+            <div style="color:black;display: flex; justify-content: center; width: 20vw; margin: 2.5vw 1.5vw;">
+                <a href="{{found.url}}">
+                    <img src="{{found.logo.url}}" style="height:10vw; max-width: 20vw;">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- 취업 회사 목록 -->
+        <div style="color:#F39926;font-family:Arial;font-size:2.2vw;font-weight: bolder;text-align: center;">WORK IN</div>
+        <div class="company_list">
+            {% for company in company_list %}
+            <div style="color:black;display: flex; justify-content: center;width: 20vw; margin: 2.5vw 1.5vw;">
+                <a href="{{company.url}}">
+                    <img src="{{company.logo.url}}" style="height:10vw; max-width: 20vw;">
+                </a>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
@@ -120,140 +245,100 @@
                 var bottom_of_window = $(window).scrollTop() + $(window).height();
 
                 if( bottom_of_window > bottom_of_object/2 ){
-                    $(this).animate({'opacity':'1', 'animation':'fadein2'}, 1800);
+                    $(this).animate({'opacity':'1', 'animation':'fadein'}, 1800);
                 }
             }); 
         });
     });
-
-    var animation = function () {
-        var items, winH;
-        
-        var initModule = function () {
-            items = document.querySelectorAll(".apple");
-            winH = window.innerHeight;
-            _addEventHandlers();
-        }
-        
-        var _addEventHandlers = function () {
-            window.addEventListener("scroll", _checkPosition);
-            window.addEventListener("load", _checkPosition);
-            window.addEventListener("resize", initModule);
-        };
-        
-        var _checkPosition = function () {
-            for (var i = 0; i < items.length; i++) {
-                var posFromTop = items[i].getBoundingClientRect().top;
-                if (winH > posFromTop) {
-                    items[i].classList.add("apple");
-                }
-            }
-        }
-        
-        return {
-            init: initModule
-        }
-    }
-    
-    animation().init();
 </script>
 
-<!-- 파트3: 커리큘럼 -->
-<div style="color:white;background-color: #182655; height: 500px; padding: 5vw 6vw;">
-    <div style="text-align: center;font-family:Arial; font-weight:bold;font-size: 3vw;">CURRICULUM</div>
-    <div style="display:flex;">
-        <div style="color:white; flex-grow: 1;">2월~3월</div>
-        <div style="flex-grow:2;background-color: white;color:black;">신입 기수 모집</div>
-    </div>
-    <div>
-        <div style="color:white;">3~6월</div>
-    </div>
-    <div>
-        <div style="color:white;">7월~</div>
-    </div>
-</div>
-
-<!-- 파트4: 멋사인 회사(창업/취업) 목록 -->
-<div style="color:white;background-color: #F39926; height: 500px;">
-    <div style="font-size:4vw;">Found</div>
-    <br>
-    <br>
-    <div style="font-size:4vw;">Work in</div>
-</div>
-
-<!-- 파트5: 프로젝트 목록 -->
-<div style="color:white;background-color: white; height: 500px;"></div>
-<div style="color:white;background-image: linear-gradient(#182655,#F39926 10%); height: 500px;">
-    
-    <!-- 창업 회사 목록 추가 -->
-    {% if user.is_authenticated %}
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#foundedModal">
-        창업 목록 추가
-    </button>
-    <div class="modal fade" id="foundedModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content" style="color:black;">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">창업 목록 추가</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="{% url 'add_founded' %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="modal-body">
-                    <table>
-                        {{founded_form.as_table}}
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">추가하기</button>
-                </div>
-            </form>
-          </div>
-        </div>
-    </div>
-    {% endif %}
-
-    <!-- 취업 회사 목록 추가 -->
-    {% if user.is_authenticated %}
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#companyModal">
-        취업 목록 추가
-    </button>
-    <div class="modal fade" id="companyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content" style="color:black;">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">취업 목록 추가</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="{% url 'add_company' %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="modal-body">
-                    <table>
-                        {{company_form.as_table}}
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">추가하기</button>
-                </div>
-            </form>
-          </div>
-        </div>
-    </div>
-    {% endif %}
-
-
+<!-- 파트4: 커리큘럼 -->
+<div style="background-color: #182655; padding: 6vw;">
+    <div style="text-align: center;font-family:Arial; font-weight:bold;font-size: 3vw;color:white;">CURRICULUM</div>
+    <table style="margin-top:3vw;" class="curriculum">
+        <tr>
+            <td id="td_month" class="detail">2월 ~ 3월</td>
+            <td style="width: 84.8%;" class="detail">신입 기수 모집</td>
+        </tr>
+    </table>
+    <table class="curriculum" >
+        <tr>
+            <td id="td_month" class="detail">3월 ~ 6월</td>
+            <td id="td_title" class="detail" onClick="td_box();">
+                기획/디자인 트랙
+            </td>
+            <td id="td_title" class="detail">
+                Front-End 트랙
+            </td>
+            <td id="td_title" class="detail">
+                Back-End 트랙
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #182655;" class="detail"></td>
+            <td id="td_box" class="detail">
+                <div id="td_div">HTML/CSS</div>
+                <div id="td_div">Python</div>
+                <div id="td_div">기획/디자인</div>
+                <div id="td_div">Git</div>
+            </td>
+            <td id="td_box" class="detail">
+                <div id="td_div">HTML/CSS</div>
+                <div id="td_div">Python</div>
+                <div id="td_div">Javascript/React</div>
+                <div id="td_div">Git</div>
+            </td>
+            <td id="td_box" class="detail">
+                <div id="td_div">HTML/CSS</div>
+                <div id="td_div">Python</div>
+                <div id="td_div">Django</div>
+                <div id="td_div">Git</div>
+            </td>
+        </tr>
+    </table>
+    <table class="curriculum">
+        <tr>
+            <td id="td_month" class="detail">7월 ~ 12월</td>
+            <td id="td_title" class="detail">
+                팀 프로젝트
+            </td>
+            <td id="td_title" class="detail">
+                대회
+            </td>
+            <td id="td_title" class="detail">
+                알럼나이 행사
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #182655;" class="detail"></td>
+            <td id="td_box" class="detail">
+                <div id="td_div">서비스 출시</div>
+            </td>
+            <td id="td_box" class="detail">
+                <div id="td_div">아이디어톤</div>
+                <div id="td_div">해커톤</div>
+                <div id="td_div">신촌톤</div>
+                <div id="td_div">기업 연계 행사</div>
+            </td>
+            <td id="td_box" class="detail">
+                <div id="td_div">동문 멘토링</div>
+                <div id="td_div">특강</div>
+            </td>
+        </tr>
+    </table>
+    <div style="color:white; margin: 2vw  2vw 3vw 0; font-size: 1.5vw;text-align: right;">* 위 내용은 해마다 상이할 수 있습니다</div>
 </div>
 
 <!-- 파트5: 프로젝트 목록 -->
-<div style="color:white;background-image: linear-gradient(#F39926, white 10%); height: 500px;">
+<div style="color:black; padding: 6vw 6vw 4vw 6vw;">
 
-    <!-- 프로젝트 목록 추가 -->
+    <!-- 프로젝트 추가 -->
     {% if user.is_authenticated %}
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal">
-        프로젝트 목록 추가
-    </button>
+    <div style="display:flex;justify-content:center; margin-bottom: 3vw;">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal">
+            프로젝트 목록 추가
+        </button>    
+    </div>
     <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content" style="color:black;">
@@ -278,8 +363,80 @@
     </div>
     {% endif %}
 
+    <!-- 프로젝트 목록 -->
+
+    <div style="text-align: center;font-family:Times New Roman; font-weight:bold;font-size: 3vw;">PROJECT</div>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <script>
+        $( document ).ready( function() {
+            $( '.slider' ).slick( {
+                autoplay: true,
+                autoplaySpeed: 1000,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                prevArrow:"<img class='a-left control-c prev slick-prev' src='{% static 'prev.png' %}' style='width:3.5vw; height:3.5vw;'>",
+                nextArrow:"<img class='a-right control-c next slick-next' src='{% static 'next.png' %}' style='width:3.5vw; height:3.5vw;'>",
+            } );
+        } );
+        
+    </script>
+
+    <style>
+        .project {
+            width:100%;
+            height: 20vw;
+        }
+        .slider {
+            margin: 3vw;
+            padding: 0 3vw;
+        }
+        .project_content {
+            display:flex;
+            justify-content:center;
+            margin: 2vw;
+            border-radius: 1vw;
+            border: 0.1vw solid rgba(134, 134, 134, 0.24);
+            height: 30vw;
+            width: 15vw;
+            box-shadow: 0px 0px 1.5vw rgba(0, 0, 0, 0.16);
+        }
+        a:hover {color: inherit;}
+
+    </style>
+  
+    <div class="slider">
+        {% for project in project_list %}
+            <div class="project_content">
+                {% if project.url %}
+                <a href="{{project.url}}" style="display:flex; flex-direction:column;">
+                {% else %}
+                {% endif %}
+                    <div style="text-align: center;font-family: Arial;font-weight: bold; font-size: 2.2vw;padding: 3.5vw 1vw 2vw 1vw;">
+                        {{project.name}}
+                    </div>
+                    <div style="display:flex;justify-content:center;">
+                        {% if project.logo %}
+                        <img src="{{project.logo.url}}" style="max-width:14vw; height: 12vw;">
+                        {% else %}
+                        <img src="{% static '멋사로고.png' %}" style="max-width:14vw; height: 12vw;">
+                        {% endif %}
+                    </div>
+                    <div style="text-align: center;font-family: 'Noto Sans KR', sans-serif;font-size: 1.3vw;padding: 2.7vw 1.5vw 3vw 1.5vw;color:rgb(105, 105, 105);">
+                        {{project.detail}}
+                    </div>
+                </a>
+            </div>    
+        {% endfor %}
+    </div>
 </div>
 
 <!-- footer -->
+<footer style="background-color:black;color: rgb(141, 140, 140); bottom:0; height: 5vw; font-size:1.2vw;display: flex; justify-content: center;">
+    <div style="margin:auto 0;">© 2022 LikelionYonsei. All rights reserved.</div>
+</footer>
 
 {% endblock %}

@@ -10,10 +10,17 @@ def home(request):
     company_form = CompanyForm()
     project_form = ProjectForm()
 
+    founded_list = Founded.objects.order_by('-created_at')
+    company_list = Company.objects.order_by('-created_at')
+    project_list = Project.objects.order_by('-created_at')
+
     ctx = {
         'founded_form':founded_form, 
         'company_form':company_form,
         'project_form':project_form,
+        'founded_list':founded_list,
+        'company_list':company_list,
+        'project_list':project_list,
     }
     return render(request, 'home.html', ctx)
 
