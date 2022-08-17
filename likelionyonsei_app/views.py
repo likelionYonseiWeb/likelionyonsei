@@ -25,9 +25,19 @@ def home(request):
     return render(request, 'home.html', ctx)
 
 def alumni(request):
-    members = Member.objects.all()
+    all_members = Member.objects.all().order_by('-number')
+    latest_num = all_members[0].number
+    page = request.GET.get('page', latest_num)
+    page = int(page or latest_num)
+    members = Member.objects.filter(number=page)
     member_form = MemberForm()
-    return render(request, 'alumni.html', {'members':members, 'member_form':member_form,})
+    ctx = {
+        'members':members, 
+        'member_form':member_form,
+        'page':page,
+        'latest_num':latest_num,
+    }
+    return render(request, 'alumni.html', ctx)
 
 def recruit(request):
     if (request.method == 'POST'):
