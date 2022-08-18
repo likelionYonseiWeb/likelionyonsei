@@ -12,81 +12,168 @@
     }
 </style>
 <div>
-    <h1>Members</h1>
+  <!-- 기수 -->  
+  <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+  <script>
+      $( document ).ready( function() {
+          $( '.slider' ).slick( {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              prevArrow:"<img class='a-left control-c prev slick-prev' src='{% static 'prev.png' %}' style='width:3.5vw; height:3.5vw;'>",
+              nextArrow:"<img class='a-right control-c next slick-next' src='{% static 'next.png' %}' style='width:3.5vw; height:3.5vw;'>",
+          } );
+      } );
+  </script>
 
-    <!-- 새 구성원 추가 -->
-    <div>
-        {% if user.is_authenticated %}
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#memberModal">
-            새 구성원 추가
-        </button>
-        <div class="modal fade" id="memberModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">새 구성원 추가</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="{% url 'add_member' %}" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <div class="modal-body">
-                        <table>
-                            {{member_form.as_table}}
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">추가하기</button>
-                    </div>
-                </form>
+  <style>
+      .project {
+          width:100%;
+          height: 20vw;
+      }
+      .slider {
+          margin: 3vw;
+          padding: 0 3vw;
+      }
+      .project_content {
+          display:flex;
+          justify-content:center;
+          margin: 2vw;
+          border-radius: 1vw;
+          border: 0.1vw solid rgba(134, 134, 134, 0.24);
+          height: 30vw;
+          width: 15vw;
+          box-shadow: 0px 0px 1.5vw rgba(0, 0, 0, 0.16);
+      }
+      a:hover {color: inherit;}
+  </style>
+  <div class="slider">
+      
+      {% for project in project_list %}
+          <div class="project_content">
+              {% if project.url %}
+              <a href="{{project.url}}" style="display:flex; flex-direction:column;">
+              {% else %}
+              {% endif %}
+                  <div style="text-align: center;font-family: Arial;font-weight: bold; font-size: 2.2vw;padding: 3.5vw 1vw 2vw 1vw;">
+                      {{project.name}}
+                  </div>
+                  <div style="display:flex;justify-content:center;">
+                      {% if project.logo %}
+                      <img src="{{project.logo.url}}" style="max-width:14vw; height: 12vw;">
+                      {% else %}
+                      <img src="{% static '멋사로고.png' %}" style="max-width:14vw; height: 12vw;">
+                      {% endif %}
+                  </div>
+                  <div style="text-align: center;font-family: 'Noto Sans KR', sans-serif;font-size: 1.3vw;padding: 2.7vw 1.5vw 3vw 1.5vw;color:rgb(105, 105, 105);">
+                      {{project.detail}}
+                  </div>
+              </a>
+          </div>    
+      {% endfor %}
+  </div>
+
+  <!-- 새 구성원 추가 -->
+  <div>
+      {% if user.is_authenticated %}
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#memberModal">
+          새 구성원 추가
+      </button>
+      <div class="modal fade" id="memberModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">새 구성원 추가</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
+              <form action="{% url 'add_member' %}" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="modal-body">
+                      <table>
+                          {{member_form.as_table}}
+                      </table>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">추가하기</button>
+                  </div>
+              </form>
             </div>
-        </div>
-        {% endif %}
-    </div>
+          </div>
+      </div>
+      {% endif %}
+  </div>
 
-    <!-- 구성원 나열 -->
-    <div class="members">
-        <div class="row row-cols-4 row-cols-md-4 g-4">
-            {% for member in members %}
-            <div class="card">
-                <a data-bs-toggle="modal" data-bs-target="#exampleModal-{{member.id}}">
-                    <img class="card-img-top" src="{{member.photo.url}}" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">{{member.name}}</h5>
-                      <p class="card-text">{{member.moto}}</p>
-                    </div>
-                    <div class="card-footer">
-                      <small class="text-muted">{{member.job}}</small>
-                    </div>
-                </a>
-            </div>
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal-{{member.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">{{member.name}}</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <img src="{{member.photo.url}}" style="width:50%; height:auto;">
-                        <p>{{member.job}}</p>
-                        <p>{{member.detail1}}</p>
-                        <p>{{member.detail2}}</p>
-                    </div>
-                    <div class="modal-footer">
-                      <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                      <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                    </div>
+  <!-- 구성원 나열 -->
+  <div class="members">
+      <div class="row row-cols-4 row-cols-md-4 g-4">
+          {% for member in members %}
+          {% if member.number == num %}
+          <div class="card">
+              <a data-bs-toggle="modal" data-bs-target="#exampleModal-{{member.id}}">
+                  <img class="card-img-top" src="{{member.photo.url}}" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">{{member.name}}</h5>
+                    <p class="card-text">{{member.moto}}</p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted">{{member.job}}</small>
+                  </div>
+              </a>
+          </div>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal-{{member.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{member.name}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <img src="{{member.photo.url}}" style="width:50%; height:auto;">
+                      <p>{{member.job}}</p>
+                      <p>{{member.detail1}}</p>
+                      <p>{{member.detail2}}</p>
+                  </div>
+                  <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                   </div>
                 </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-
-    
+              </div>
+          </div>
+          {% else %}
+          {% endif %}
+          {% endfor %}
+      </div>
+  </div>
+      
 </div>
+
+<script>
+  /*세부 메뉴바*/
+  const items = document.querySelectorAll('.item');
+  const sections = document.querySelectorAll('section');
+
+  function removeActive(){
+      items.forEach(item=>{
+          item.classList.remove('active');
+      });
+
+      sections.forEach(item=>{
+          item.classList.remove('active');
+      });
+  }
+
+  items.forEach((item,index)=>{
+      item.addEventListener('click', function(){
+          removeActive();
+          item.classList.add('active');
+          sections[index].classList.add('active');
+      });
+  })
+</script>
 
 {% endblock %}
