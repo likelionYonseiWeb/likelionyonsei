@@ -10,8 +10,8 @@ def home(request):
     company_form = CompanyForm()
     project_form = ProjectForm()
 
-    founded_list = Founded.objects.order_by('-created_at')
-    company_list = Company.objects.order_by('-created_at')
+    founded_list = Founded.objects.order_by('?')
+    company_list = Company.objects.order_by('?')
     project_list = Project.objects.order_by('-created_at')
 
     ctx = {

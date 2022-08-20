@@ -44,7 +44,7 @@ class Company(models.Model):
         return self.name
 
 class Project(models.Model):
-    name = models.CharField(max_length=10)
+    name = models.CharField(max_length=8)
     number = models.PositiveIntegerField(default=1)
     detail = models.CharField(max_length=15)
     logo = models.ImageField(null=True, blank=True)
