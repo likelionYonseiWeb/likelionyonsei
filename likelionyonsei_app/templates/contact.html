@@ -10,38 +10,68 @@
     #tran_contact:hover {
         color:black;
     }
+    .contact_title {
+        text-align:center;
+        font-size:2vw;
+        font-weight:bold;
+        margin:0 0 2.5vw 0;
+        width: 20vw;
+    }
+    .contact_content {
+        display:flex;
+        flex-direction:column;
+        width: 20vw;
+        border-radius: 2vw;
+    }
+    .contact_img {
+        display: flex;
+        justify-content: center;
+        margin: 6vw auto;
+    }
+    .contact_mail {
+        text-align: center;
+        color:white;
+        border-radius: 0 0vw 1vw 1vw;
+        padding: 1.5vw 0;
+        font-size: 1.5vw;
+        font-weight: bold;
+    }
 </style>
 
-<div class="card-deck">
-    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-        <a href="mailto:yonsei@likelion.org">
-            <div class="card-header">메일</div>
-            <div class="card-body">
-              <h5 class="card-title">aaa@gmail.com</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </a>
+<div style="display: flex;justify-content:space-around; margin: 5vw 5vw 0 5vw;">
+    <div>
+        <div class="contact_title"><span style="color:rgba(255, 96, 96)">Mail</span> 문의</div>
+        <div class="contact_content"  style="box-shadow: 0 0 1vw rgba(255, 96, 96, 0.5);">
+            <a href="mailto:yonsei@likelion.org">
+                <div class="contact_img">
+                    <img src="{% static 'gmail.png' %}" style="width:8vw;height:8w;">
+                </div>
+            </a>
+            <div class="contact_mail" style="background-color: rgb(255, 96, 96);border: 0;">yonsei@likelion.org</div>    
+        </div>    
     </div>
-    
-    
-    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-        <a href="https://www.facebook.com/yonsei.likelion" target="_blank">
-            <div class="card-header">페이스북</div>
-            <div class="card-body">
-              <h5 class="card-title">@yonsei.likelion</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </a>
+    <div>
+        <div class="contact_title"><span style="color:rgba(98, 130, 235)">Facebook</span> 문의</div>
+        <div class="contact_content"  style="box-shadow: 0 0 1vw rgba(98, 130, 235, 0.5);">
+            <a href="https://www.facebook.com/yonsei.likelion" target="_blank">
+                <div class="contact_img">
+                    <img src="{% static 'facebook.png' %}" style="width:8vw;height:8w;">
+                </div>
+            </a>
+            <div class="contact_mail" style="background-color: rgb(98, 130, 235);border: 0;">@yonsei.likelion</div>    
+        </div>    
     </div>
-
-    <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
-        <a href="https://www.instagram.com/likelion_yonsei" target="_blank">
-            <div class="card-header">인스타그램</div>
-            <div class="card-body">
-              <h5 class="card-title">@likelion_yonsei</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </a>
+    <div>
+        <div class="contact_title"><span style="color:rgba(152, 96, 255)">Instagram</span> 문의</div>
+        <div class="contact_content"  style="box-shadow: 0 0 1vw rgba(152, 96, 255, 0.5);">
+            <a href="https://www.instagram.com/likelion_yonsei" target="_blank">
+                <div class="contact_img">
+                    <img src="{% static 'instagram.png' %}" style="width:8vw;height:8w;">
+                </div>
+            </a>
+            <div class="contact_mail" style="background-color: rgb(152, 96, 255);border: 0;">@likelion_yonsei</div>    
+        </div>    
     </div>
 </div>
+
 {% endblock %}
