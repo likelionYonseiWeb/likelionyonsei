@@ -21,14 +21,14 @@
         font-size: 1.7vw;
         font-family: 'Noto Sans KR', sans-serif;
         width: 18vw;
-        margin: 0 auto;
+        margin: 2vw auto 0 auto;
     }
     .button:hover {
         background-color: white;
         color: #F39926;
     }
     .recruit_content {
-        background-color: rgba(189, 223, 255, 0.363);
+        background-color: #eeee;
         width:30vw;
         border-radius: 1vw;
         padding: 2vw;
@@ -44,7 +44,7 @@
     .recruit_detail {
         font-family: sans-serif;
         font-size: 1.3vw;
-        margin: 0.7vw 0;
+        margin: 0.7vw 0vw;
     }
     .hideme {
         opacity: 1;
@@ -67,9 +67,10 @@
 
 <div style="margin-bottom:11.5vw;">
     <!-- 리크루팅 -->
-    <div style="background-color: black; display: flex;flex-direction:column;height: 20vw">
-        <img src="{% static '문구.png' %}" width="55%" style="margin:4.2vw auto 3.2vw auto;">
-        {% if recruit_url %}
+    <div style="background-color: black; display: flex;flex-direction:column;height: 30vw">
+        <div style="margin:auto;display: flex;flex-direction: column; width: 100vw;">
+            <img src="{% static '문구.png' %}" width="60%" style="margin:auto;">
+            {% if recruit_url %}
             <button class="button">
                 <a href="{{recruit_url.url}}" target="_blank">
                     <div>
@@ -77,9 +78,10 @@
                     </div>
                 </a>
             </button>
-        {% else %}
-            <button class="button" onclick="javascript:btn()">지원하기</button>
-        {% endif %}
+            {% else %}
+                <button class="button" onclick="javascript:btn()">지원하기</button>
+            {% endif %}    
+        </div>
     </div>
 
     <script>
@@ -105,7 +107,7 @@
 
     <!-- 모집 조건 -->
     <div class="hideme">
-        <div class="recruit_content" style="margin-left: 4vw; margin-right: 2vw;">
+        <div class="recruit_content" style="margin-left: 9vw; margin-right: 2vw;">
             <div class="recruit_title">모집절차</div>
             <div class="recruit_detail"><strong style="color:#F39926">1차</strong> 서류 모집</div>
             <div class="recruit_detail" style="margin-left:1vw;font-size:1.2vw;">기획/디자인, Front-End, Back-End <br> <strong>총 3트랙</strong>으로 나누어 모집</div>
@@ -115,10 +117,10 @@
             <div class="recruit_title">지원자격</div>
             <div class="recruit_detail">모든 활동을 <strong style="color:#F39926">성실</strong>히 참여할 수 있고</div>
             <div class="recruit_detail">창업/개발에 <strong style="color:#F39926">열정</strong>과 관심이 많고</div>
-            <div class="recruit_detail">팀원들과의 <strong style="color:#F39926">협업</strong>능력을 가지고 있는</div>
+            <div class="recruit_detail">팀원간의 <strong style="color:#F39926">협업</strong>능력을 가지고 있는</div>
             <div class="recruit_detail"><strong>연세대학교(서울)</strong> 대학생/대학원생</div>
         </div>
-        <div class="recruit_content" style="margin-left: 2vw; margin-right: 4vw;">
+        <div class="recruit_content" style="margin-left: 2vw; margin-right: 9vw;">
             <div class="recruit_title">정기세션</div>
             <div class="recruit_detail">매주<strong style="color:#F39926"> 목요일 오후 7시</strong>부터</div>
             <div class="recruit_detail">약 <strong style="color:#F39926">1~2시간</strong> 동안</div>

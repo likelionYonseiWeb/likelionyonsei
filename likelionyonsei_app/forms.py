@@ -8,6 +8,7 @@ class RecruitForm(forms.ModelForm):
         widgets = {
             'start_date': forms.DateTimeInput(format=('%Y-%m-%dT%H:%M'), attrs={'class':'form-control', 'placeholder':'Select a date', 'type':'date'}),
             'end_date': forms.DateTimeInput(format=('%Y-%m-%dT%H:%M'), attrs={'class':'form-control', 'placeholder':'Select a date', 'type':'date'}),
+            'url': forms.TextInput(attrs={'placeholder':'https://'},),
         }
         labels = {
             'url': 'URL',
@@ -33,6 +34,9 @@ class FoundedForm(forms.ModelForm):
     class Meta:
         model = Founded
         fields = '__all__'
+        widgets = {
+            'url': forms.TextInput(attrs={'placeholder':'https://'},),
+        }
         labels = {
             'name': '회사명',
             'logo': '회사로고',
@@ -44,6 +48,9 @@ class CompanyForm(forms.ModelForm):
     class Meta:
         model = Company
         fields = '__all__'
+        widgets = {
+            'url': forms.TextInput(attrs={'placeholder':'https://'},),
+        }
         labels = {
             'name': '회사명',
             'logo': '회사로고',
@@ -55,6 +62,9 @@ class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = '__all__'
+        widgets = {
+            'url': forms.TextInput(attrs={'placeholder':'https://'},),
+        }
         labels = {
             'name': '프로젝트명',
             'number': '기수',
