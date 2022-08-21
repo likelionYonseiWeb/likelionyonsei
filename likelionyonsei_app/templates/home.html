@@ -270,7 +270,7 @@
             {% for found in founded_list %}
                 <div class="company_content">
                     {% if found.url %}
-                    <a href="{{found.url}}">
+                    <a href="{{found.url}}" target="_blank">
                     {% else %}
                     {% endif %}
                         <div style="display:flex;justify-content:center;">
@@ -291,7 +291,7 @@
             {% for company in company_list %}
                 <div class="company_content">
                     {% if company.url %}
-                    <a href="{{company.url}}" style="display:flex; flex-direction:column;">
+                    <a href="{{company.url}}" style="display:flex; flex-direction:column;" target="_blank">
                     {% else %}
                     {% endif %}
                         <div style="display:flex;justify-content:center;">
@@ -468,7 +468,7 @@
         {% for project in project_list %}
             <div class="project_content">
                 {% if project.url %}
-                <a href="{{project.url}}" style="display:flex; flex-direction:column;">
+                <a href="{{project.url}}" style="display:flex; flex-direction:column;" target="_blank">
                 {% else %}
                 {% endif %}
                     <div style="text-align: center;font-family: Arial;font-weight: bold; font-size: 2.2vw;padding: 3.5vw 1vw 2vw 1vw;">
