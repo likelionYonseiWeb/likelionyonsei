@@ -26,8 +26,8 @@ class MemberForm(forms.ModelForm):
             'moto': '한줄소개',
             'detail1': '자기소개',
             'detail2': '멋사 활동을 통해 얻은 것',
-            'created_at' : '등록시간',
         }
+        exclude = ('created_at',)
 
 class FoundedForm(forms.ModelForm):
     class Meta:
@@ -37,8 +37,8 @@ class FoundedForm(forms.ModelForm):
             'name': '회사명',
             'logo': '회사로고',
             'url': 'URL',
-            'created_at' : '등록시간',
         }
+        exclude = ('created_at',)
 
 class CompanyForm(forms.ModelForm):
     class Meta:
@@ -48,8 +48,8 @@ class CompanyForm(forms.ModelForm):
             'name': '회사명',
             'logo': '회사로고',
             'url': 'URL',
-            'created_at' : '등록시간',
         }
+        exclude = ('created_at',)
 
 class ProjectForm(forms.ModelForm):
     class Meta:
@@ -61,5 +61,5 @@ class ProjectForm(forms.ModelForm):
             'detail': '프로젝트 소개',
             'logo': '프로젝트 로고',
             'url': 'URL',
-            'created_at' : '등록시간',
         }
+        exclude = ('created_at',)

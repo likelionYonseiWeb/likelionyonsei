@@ -6,9 +6,10 @@ from django.utils import timezone
 # Create your views here.
 
 def home(request):
-    founded_form = FoundedForm()
-    company_form = CompanyForm()
-    project_form = ProjectForm()
+    initial_data = {'url':'https://'}
+    founded_form = FoundedForm(initial=initial_data)
+    company_form = CompanyForm(initial=initial_data)
+    project_form = ProjectForm(initial=initial_data)
 
     founded_list = Founded.objects.order_by('?')
     company_list = Company.objects.order_by('?')
@@ -46,7 +47,8 @@ def recruit(request):
             form.save()
         return redirect('recruit')
     else:
-        form = RecruitForm()
+        initial_data = {'url':'https://'}
+        form = RecruitForm(initial=initial_data)
         # for user
         today = timezone.now()
         recruit_url = Recruit.objects.last()

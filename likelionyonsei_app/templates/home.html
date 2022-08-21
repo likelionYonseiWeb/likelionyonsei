@@ -271,7 +271,7 @@
         <div class="slide">
             {% for found in founded_list %}
             {% if found.url %}
-            <a href="{{found.url}}">
+            <a href="{{found.url}}" target="_blank">
             {% else %}
             {% endif %}
                 <div class="company_content">
@@ -290,7 +290,7 @@
         <div class="slide">
             {% for company in company_list %}
             {% if company.url %}
-            <a href="{{company.url}}">
+            <a href="{{company.url}}" target="_blank">
             {% else %}
             {% endif %}
                 <div class="company_content">
@@ -466,7 +466,7 @@
         {% for project in project_list %}
             <div class="project_content">
                 {% if project.url %}
-                <a href="{{project.url}}" style="display:flex; flex-direction:column;">
+                <a href="{{project.url}}" style="display:flex; flex-direction:column;" target="_blank">
                 {% else %}
                 {% endif %}
                     <div style="text-align: center;font-family: Arial;font-weight: bold; font-size: 2.2vw;padding: 3.7vw 1vw 2.4vw 1vw;">
