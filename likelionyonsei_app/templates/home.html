@@ -69,6 +69,7 @@
         border-spacing: 2vw;
         border-collapse: separate;
         margin-top: 1vw;
+        font-family:'Noto Sans KR', sans-serif;;
     }
     #td_month {
         text-align:left;
@@ -234,7 +235,7 @@
     <script>
         $( document ).ready( function() {
             $( '.slide' ).slick( {
-                slidesToShow: 3,
+                slidesToShow: 4,
                 slidesToScroll: 1,
                 prevArrow:"<img class='a-left control-c prev slick-prev' src='{% static 'arrow-left.png' %}' style='width:2.5vw; height:2.5vw;margin-left:4vw;'>",
                 nextArrow:"<img class='a-right control-c next slick-next' src='{% static 'arrow-right.png' %}' style='width:2.5vw; height:2.5vw;margin-right:4vw;'>",
@@ -251,13 +252,14 @@
         .slide {
             margin: 3vw 2vw;
             padding: 0 6vw;
+            height: 10vw;
         }
         .company_content {
             display:flex;
             justify-content:center;
-            height: 30vw;
-            width: 10vw;
-            margin: 0 3vw;
+            height: 10vw;
+            width: 15vw;
+            margin: 0 1.5vw;
         }
         a:hover {color: inherit;}
 
@@ -268,20 +270,18 @@
         <div style="color:#F39926;font-family:Arial;font-size:2.5vw;font-weight: bolder;text-align: center;">FOUND</div>
         <div class="slide">
             {% for found in founded_list %}
+            {% if found.url %}
+            <a href="{{found.url}}">
+            {% else %}
+            {% endif %}
                 <div class="company_content">
-                    {% if found.url %}
-                    <a href="{{found.url}}">
+                    {% if found.logo %}
+                    <img src="{{found.logo.url}}" style="max-width:15vw; height: 10vw;">
                     {% else %}
+                    <img src="{% static '멋사로고.png' %}" style="max-width:15vw; height: 10vw;">
                     {% endif %}
-                        <div style="display:flex;justify-content:center;">
-                            {% if found.logo %}
-                            <img src="{{found.logo.url}}" style="max-width:18vw; height: 10vw;">
-                            {% else %}
-                            <img src="{% static '멋사로고.png' %}" style="max-width:15vw; height: 12vw;">
-                            {% endif %}
-                        </div>
-                    </a>
-                </div>    
+                </div>  
+            </a>  
             {% endfor %}
         </div>
 
@@ -289,20 +289,18 @@
         <div style="color:#F39926;font-family:Arial;font-size:2.5vw;font-weight: bolder;text-align: center;margin-top: 6.5vw;">WORK IN</div>
         <div class="slide">
             {% for company in company_list %}
+            {% if company.url %}
+            <a href="{{company.url}}">
+            {% else %}
+            {% endif %}
                 <div class="company_content">
-                    {% if company.url %}
-                    <a href="{{company.url}}" style="display:flex; flex-direction:column;">
+                    {% if company.logo %}
+                    <img src="{{company.logo.url}}" style="max-width:15vw; height: 10vw;">
                     {% else %}
+                    <img src="{% static '멋사로고.png' %}" style="max-width:15vw; height: 10vw;">
                     {% endif %}
-                        <div style="display:flex;justify-content:center;">
-                            {% if company.logo %}
-                            <img src="{{company.logo.url}}" style="max-width:18vw; height: 10vw;">
-                            {% else %}
-                            <img src="{% static '멋사로고.png' %}" style="max-width:18vw; height: 10vw;">
-                            {% endif %}
-                        </div>
-                    </a>
-                </div>    
+                </div>  
+            </a>  
             {% endfor %}
         </div>
     </div>
@@ -320,7 +318,7 @@
     <table class="curriculum" >
         <tr>
             <td id="td_month" class="detail">3월 ~ 6월</td>
-            <td id="td_title" class="detail" onClick="td_box();">
+            <td id="td_title" class="detail">
                 기획/디자인 트랙
             </td>
             <td id="td_title" class="detail">
@@ -447,7 +445,7 @@
             height: 20vw;
         }
         .slider {
-            margin: 3vw;
+            margin: 3vw 3vw 6vw 3vw;
             padding: 0 3vw;
         }
         .project_content {
@@ -456,7 +454,7 @@
             margin: 2vw;
             border-radius: 1vw;
             border: 0.1vw solid rgba(134, 134, 134, 0.24);
-            height: 30vw;
+            height: 28.8vw;
             width: 15vw;
             box-shadow: 0px 0px 1.5vw rgba(0, 0, 0, 0.16);
         }
@@ -471,17 +469,17 @@
                 <a href="{{project.url}}" style="display:flex; flex-direction:column;">
                 {% else %}
                 {% endif %}
-                    <div style="text-align: center;font-family: Arial;font-weight: bold; font-size: 2.2vw;padding: 3.5vw 1vw 2vw 1vw;">
+                    <div style="text-align: center;font-family: Arial;font-weight: bold; font-size: 2.2vw;padding: 3.7vw 1vw 2.4vw 1vw;">
                         {{project.name}}
                     </div>
                     <div style="display:flex;justify-content:center;">
                         {% if project.logo %}
-                        <img src="{{project.logo.url}}" style="max-width:14vw; height: 12vw;">
+                        <img src="{{project.logo.url}}" style="max-width:15vw; height: 10vw;">
                         {% else %}
-                        <img src="{% static '멋사로고.png' %}" style="max-width:14vw; height: 12vw;">
+                        <img src="{% static '멋사로고.png' %}" style="max-width:15vw; height: 10vw;">
                         {% endif %}
                     </div>
-                    <div style="text-align: center;font-family: 'Noto Sans KR', sans-serif;font-size: 1.3vw;padding: 2.7vw 1.5vw 3vw 1.5vw;color:rgb(105, 105, 105);">
+                    <div style="text-align: center;font-family: 'Noto Sans KR', sans-serif;font-size: 1.3vw;padding: 2.5vw 1.5vw 3vw 1.5vw;color:rgb(105, 105, 105);">
                         {{project.detail}}
                     </div>
                 </a>
@@ -489,16 +487,5 @@
         {% endfor %}
     </div>
 </div>
-
-<!-- footer -->
-<footer style="background-color:black;color: rgb(141, 140, 140); bottom:0; height: 5vw; font-size:1.2vw;display: flex; justify-content: center;">
-    <div id="footer" style="margin:auto 0;">© 2022 LikelionYonsei. All rights reserved.</div>
-</footer>
-
-<script>
-    let today = new Date();   
-    let year = today.getFullYear();
-    $('#footer').text('© ' + year + ' LikelionYonsei. All rights reserved.');
-</script>
 
 {% endblock %}
