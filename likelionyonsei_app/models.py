@@ -5,11 +5,10 @@ from django.utils import timezone
 # Create your models here.
 
 class Member(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=5)
     number = models.PositiveIntegerField(default=1)
     photo = models.ImageField(null=True, blank=True)
-    moto = models.CharField(max_length=300)
-    job = models.CharField(max_length=100)
+    moto = models.CharField(max_length=20)
     detail1 = models.TextField()
     detail2 = models.TextField()
     created_at = models.DateTimeField(default=timezone.now)

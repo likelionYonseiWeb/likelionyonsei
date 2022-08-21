@@ -23,7 +23,6 @@ class MemberForm(forms.ModelForm):
             'number': '기수',
             'photo': '사진',
             'moto': '한줄소개',
-            'job': '직군/관심직군',
             'detail1': '자기소개',
             'detail2': '멋사 활동을 통해 얻은 것',
         }
