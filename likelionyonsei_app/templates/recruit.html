@@ -73,7 +73,7 @@
 
     <!-- 리크루팅 URL 등록 -->
     {% if user.is_authenticated %}
-    <form action="{% url 'recruit' %}" method="post" style="margin: 3vw 0 0 0;">
+    <form action="{% url 'recruit' %}" method="post" style="margin: 4vw 0 0 0;">
         {%csrf_token%}
         <table style="margin-right: 2vw;display: flex;justify-content:center;">
             {{form.as_table}}
