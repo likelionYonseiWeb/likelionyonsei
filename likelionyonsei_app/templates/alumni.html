@@ -29,8 +29,8 @@
       width: 17vw;
     }
     .card-body {
-      height:10.5vw;
-      padding:1.3vw;
+      height:14vw;
+      padding:1.5vw;
       background-color: rgba(165, 162, 162, 0.1);
     }
     .card-title {
@@ -39,14 +39,15 @@
       font-family: 'Noto Sans KR', sans-serif;
     }
     .card-text {
-      font-size: 1.3vw;
+      font-size: 1.2vw;
+      margin-top: 0.8vw;
     }
 
 </style>
 
 <div>
   <!-- 구성원 나열 Paginator -->
-  <div style="display:flex;background-color: black;color:#F39926;height: 20vw;justify-content: center;">
+  <div style="display:flex;background: linear-gradient(black, #182655);color:#F39926;height: 20vw;justify-content: center;">
     {% if page is not 1 %}
     <a href="?page={{page|add:-1}}" style="margin: auto 0;">
     {% else %}
@@ -55,7 +56,7 @@
       <img src="{% static 'down.png' %}" style="width:2.5vw;height:2.5vw;margin: auto 0;">
     </a>
 
-    <div style="font-size: 5vw;font-weight:bold;font-family: 'Noto Sans KR', sans-serif;margin: auto 1.5vw;">{{page}}기</div>
+    <div style="font-size: 4.7vw;font-weight:bold;font-family: 'Noto Sans KR', sans-serif;margin: auto 1.5vw;">{{page}}기</div>
     
     {% if page is not latest_num %}
     <a href="?page={{page|add:1}}" style="margin: auto 0;">
@@ -122,7 +123,7 @@
                     <div class="modal-title" id="exampleModalLabel" style="margin-left:1vw;">{{page}}기 {{member.name}}</div>
                     <img src="{% static 'cancel.png' %}" style="width:1.85vw; height: 1.8vw;margin-right: 1vw; background-color: white;" type="button" data-bs-dismiss="modal" aria-label="Close">
                   </div>
-                  <div class="modal-body" style="padding: 1.8vw 2.2vw">
+                  <div class="modal-body" style="padding: 1.8vw 2.2vw 2.5vw 2.2vw">
                       {% if member.photo %}
                       <img src="{{member.photo.url}}" style="width:50%; height:auto;border-radius: 5%;">
                       {% else %}

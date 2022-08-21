@@ -55,6 +55,7 @@
             bottom: 0;
             width: 100%;
         }
+        a:hover {color:inherit;}
     </style>
 </head>
 <body style="height: 100%;">
@@ -96,8 +97,11 @@
     {% endblock %}
 
     <!-- footer -->
-    <footer style="background-color:black;color: rgb(141, 140, 140); bottom:0; height: 5vw; font-size:1.2vw;display: flex; justify-content: center;">
-        <div id="footer" style="margin:auto 0;">© 2022 LikelionYonsei. All rights reserved.</div>
+    <footer style="background-color:black;color: rgba(141, 140, 140, 0.6); bottom:0; height: 6vw; font-size:1.2vw;display: flex;flex-direction: column; justify-content: center;">
+        <div style="margin:auto;">
+            <div id="footer" style="margin:auto;text-align: center;font-family: Arial;">© 2022 LikelionYonsei. All rights reserved.</div>
+            <div style="margin:auto;text-align: center;font-size:1vw;margin-top:0.3vw;">Produced by 9기 박진효 이수민</div>    
+        </div>
     </footer>
   
     <script>

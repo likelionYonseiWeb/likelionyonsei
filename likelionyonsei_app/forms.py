@@ -10,6 +10,7 @@ class RecruitForm(forms.ModelForm):
             'end_date': forms.DateTimeInput(format=('%Y-%m-%dT%H:%M'), attrs={'class':'form-control', 'placeholder':'Select a date', 'type':'date'}),
         }
         labels = {
+            'url': 'URL',
             'start_date': '모집 시작일',
             'end_date': '모집 마감일',
         }

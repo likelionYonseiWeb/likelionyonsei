@@ -49,7 +49,7 @@ def recruit(request):
         form = RecruitForm()
         # for user
         today = timezone.now()
-        recruit_url = Recruit.objects.latest('end_date')
+        recruit_url = Recruit.objects.last()
         s_date = recruit_url.start_date
         e_date = recruit_url.end_date
         if (s_date > today or e_date < today):
