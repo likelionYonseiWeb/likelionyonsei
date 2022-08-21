@@ -46,6 +46,23 @@
         font-size: 1.3vw;
         margin: 0.7vw 0;
     }
+    .hideme {
+        opacity: 1;
+        display:flex;
+        justify-content: space-around;
+        animation: fadein 2s;
+    }
+    @keyframes fadein {
+        from {
+            opacity: 0;
+            transform: translateY(-1vw);
+            
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
 </style>
 
 <div style="margin-bottom:11.5vw;">
@@ -87,7 +104,7 @@
     {% endif %}
 
     <!-- 모집 조건 -->
-    <div style="display:flex;justify-content: space-around;">
+    <div class="hideme">
         <div class="recruit_content" style="margin-left: 4vw; margin-right: 2vw;">
             <div class="recruit_title">모집절차</div>
             <div class="recruit_detail"><strong style="color:#F39926">1차</strong> 서류 모집</div>
@@ -109,6 +126,7 @@
             <div class="recruit_detail" style="font-size:1.2vw">* 상황에 따라 <strong>온라인</strong>으로 세션 진행</div>
         </div>
     </div>
+
 </div>
 
 {% endblock %}
