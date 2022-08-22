@@ -103,9 +103,9 @@
 </style>
 
 <!-- 새 구성원 추가 -->
-<div style="display:flex; margin-top:1.5vw;margin-bottom: 4vw;">
-  {% if user.is_authenticated %}
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#memberModal" style="margin: 3vw auto 0 auto;">
+{% if user.is_authenticated %}
+<div style="display:flex; justify-content: center;margin: 3vw 0;">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#memberModal">
       새 구성원 추가
   </button>
   <div class="modal fade" id="memberModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -130,9 +130,8 @@
         </div>
       </div>
   </div>
-  {% endif %}
 </div>
-
+{% endif %}
 
 <div>
   <div style="background-color:black;height: 30vw;display: flex;flex-direction: column;margin: auto;">
