@@ -161,7 +161,6 @@
       transform: scale(60);
     }
     .menu-overlay {
-      margin-top: 18vw;
       background-color: #eeee;
       color: #333;
       height: 100%;
@@ -278,22 +277,22 @@
     </div>
 
     <div class="menu-overlay">
-        <div style="top:0vw;" class="overlay-menu">
+        <div style="top:15vw;" class="overlay-menu" id="overlay-home">
             <a href="{% url 'home' %}">
                 HOME
             </a>
         </div>
-        <div style="top:28vw;" class="overlay-menu">
+        <div style="top:43vw;" class="overlay-menu" id="overlay-alumni">
             <a href="{% url 'alumni' %}">
                 ALUMNI
             </a>
         </div>
-        <div style="top:56vw;" class="overlay-menu">
+        <div style="top:71vw;" class="overlay-menu" id="overlay-recruit">
             <a href="{% url 'recruit' %}">
                 RECRUIT
             </a>
         </div>
-        <div style="top:84vw;" class="overlay-menu">
+        <div style="top:99vw;" class="overlay-menu" id="overlay-contact">
             <a href="{% url 'contact' %}">
                 CONTACT
             </a>
