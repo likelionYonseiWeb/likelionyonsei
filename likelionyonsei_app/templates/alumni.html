@@ -129,24 +129,24 @@
   }
   .arrow-prev-mob::after {
     position: absolute;
-    top:2.6vw;
-    right: 5vw;
+    top:4vw;
+    right: 4.8vw;
     content: '';
-    width: 3vw; /* 사이즈 */
-    height: 3vw; /* 사이즈 */
-    border-top: 0.8vw solid white; /* 선 두께 */
-    border-right: 0.8vw solid white; /* 선 두께 */
+    width: 4.7vw; /* 사이즈 */
+    height: 4.7vw; /* 사이즈 */
+    border-top: 1vw solid white; /* 선 두께 */
+    border-right: 1vw solid white; /* 선 두께 */
     transform: rotate(225deg);
   }
   .arrow-next-mob::after {
     position: absolute;
     left: 5.4vw;
-    top:2.6vw;
+    top:4vw;
     content: '';
-    width: 3vw; /* 사이즈 */
-    height: 3vw; /* 사이즈 */
-    border-top: 0.8vw solid white; /* 선 두께 */
-    border-right: 0.8vw solid white; /* 선 두께 */
+    width: 4.7vw; /* 사이즈 */
+    height: 4.7vw; /* 사이즈 */
+    border-top: 1vw solid white; /* 선 두께 */
+    border-right: 1vw solid white; /* 선 두께 */
     transform: rotate(45deg); /* 각도 */
   }
   .arrow-prev-mob-1, .arrow-next-mob-1 {
@@ -156,24 +156,24 @@
   }
   .arrow-prev-mob-1::after {
       position: absolute;
-      top:2.6vw;
+      top:4vw;
       right: 5vw;
       content: '';
-      width: 3vw; /* 사이즈 */
-      height: 3vw; /* 사이즈 */
-      border-top: 0.8vw solid grey; /* 선 두께 */
-      border-right: 0.8vw solid grey; /* 선 두께 */
+      width: 4.7vw; /* 사이즈 */
+      height: 4.7vw; /* 사이즈 */
+      border-top: 1vw solid grey; /* 선 두께 */
+      border-right: 1vw solid grey; /* 선 두께 */
       transform: rotate(225deg);
   }
   .arrow-next-mob-1::after {
     position: absolute;
     left: 5.4vw;
-    top:2.6vw;
+    top:4vw;
     content: '';
-    width: 3vw; /* 사이즈 */
-    height: 3vw; /* 사이즈 */
-    border-top: 0.8vw solid grey; /* 선 두께 */
-    border-right: 0.8vw solid grey; /* 선 두께 */
+    width: 4.7vw; /* 사이즈 */
+    height: 4.7vw; /* 사이즈 */
+    border-top: 1vw solid grey; /* 선 두께 */
+    border-right: 1vw solid grey; /* 선 두께 */
     transform: rotate(45deg); /* 각도 */
   }
   .card_mob {
@@ -231,7 +231,6 @@
     <div style="display:flex;color:#F39926;justify-content: center;">
       {% if page is not 1 %}
         <a href="?page={{page|add:-1}}"><span class="arrow-prev"></span></a>
-        <!-- <img src="{% static 'left.png' %}" style="width:2.5vw;height:2.5vw;margin: auto 0;background-color: white;border-radius: 50%;"> -->
       {% else %}
         <div><span class="arrow-prev-1"></span></div>
       {% endif %}
@@ -240,7 +239,6 @@
       
       {% if page is not latest_num %}
         <a href="?page={{page|add:1}}"><span class="arrow-next"></span></a>
-        <!-- <img src="{% static 'right2.png' %}" style="width:2.5vw;height:2.5vw;margin: auto 0;background-color: white;border-radius: 50%;"> -->
       {% else %}
         <div><span class="arrow-next-1"></span></div>
       {% endif %}
@@ -261,7 +259,7 @@
         <div><span class="arrow-prev-mob-1"></span></div>
       {% endif %}
   
-      <div style="font-size: 5.2vw;font-weight:bold;font-family: 'Noto Sans KR', sans-serif;margin: auto 1.5vw;">{{page}}기</div>
+      <div style="font-size: 8vw;font-weight:bold;font-family: 'Noto Sans KR', sans-serif;margin: auto 1.5vw;">{{page}}기</div>
       
       {% if page is not latest_num %}
         <a href="?page={{page|add:1}}"><span class="arrow-next-mob"></span></a>
