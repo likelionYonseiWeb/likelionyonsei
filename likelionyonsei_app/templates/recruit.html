@@ -65,10 +65,64 @@
     #overlay-recruit {
         color: #F39926;
     }
-
+    #recruit_com {
+        margin-bottom:11.5vw;
+    }
+@media all and (min-width:401px) {
+    #recruit_mob {display: none;}
+}
+@media all and (max-width:401px) {
+    #recruit_com {display: none;}
+    #recruit_mob {
+        margin-bottom:24.2vw;
+    }
+    .button_mob {
+        transition-duration: 0.4s;
+        font-weight:bold;
+        border:0;
+        border-radius: 2.5vw;
+        background-color:#F39926;
+        color: white;
+        padding: auto 0;
+        font-size: 4.5vw;
+        font-family: 'Noto Sans KR', sans-serif;
+        width: 35vw;
+        margin: 3.6vw auto 0 auto;
+    }
+    .button_mob:hover {
+        background-color: white;
+        color: #F39926;
+    }
+    .hideme_mob {
+        opacity: 1;
+        display:flex;
+        flex-direction: column;
+        animation: fadein 2s;
+    }
+    .recruit_content_mob {
+        background-color: #eeee;
+        width:73vw;
+        border-radius: 3vw;
+        padding: 4.2vw 0 5vw 0;
+        margin: 9.2vw auto 0 auto;
+    }
+    .recruit_title_mob {
+        font-family: 'Noto Sans KR';
+        font-weight: bold;
+        font-size: 5vw;
+        text-align: center;
+        margin-bottom: 2.5vw;
+    }
+    .recruit_detail_mob {
+        font-family: sans-serif;
+        font-size: 4vw;
+        margin: 0.7vw 0vw;
+        padding-left:5.5vw;
+    }
+}
 </style>
 
-<div style="margin-bottom:11.5vw;">
+<div id="recruit_com">
     <!-- 리크루팅 -->
     <div style="background-color: black; display: flex;flex-direction:column;height: 30vw">
         <div style="margin:auto;display: flex;flex-direction: column; width: 100vw;">
@@ -133,5 +187,72 @@
     </div>
 
 </div>
+
+<div id="recruit_mob">
+    <!-- 리크루팅 모바일 버전 -->
+    <div style="background-color: black; display: flex;flex-direction:column;height: 40vw">
+        <div style="margin:auto;display: flex;flex-direction: column;">
+            <img src="{% static '문구.png' %}" width="80%" style="margin:auto;">
+            {% if recruit_url %}
+            <button class="button_mob">
+                <a href="{{recruit_url.url}}" target="_blank">
+                    <div>
+                        지원하기
+                    </div>
+                </a>
+            </button>
+            {% else %}
+                <button class="button_mob" onclick="javascript:btn()">지원하기</button>
+            {% endif %}    
+        </div>
+    </div>
+
+    <script>
+        function btn(){
+            alert('현재 모집기간이 아닙니다');
+        }
+    </script>
+
+    <!-- 리크루팅 URL 등록 -->
+    {% if user.is_authenticated %}
+    <form action="{% url 'recruit' %}" method="post" style="margin: 4vw 0 0 0;">
+        {%csrf_token%}
+        <table style="margin-right: 2vw;display: flex;justify-content:center;">
+            {{form.as_table}}
+        </table>
+        <div style="display: flex;justify-content:center;margin-top: 1.5vw;">
+            <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#memberModal">
+                등록
+            </button>    
+        </div>
+    </form>
+    {% endif %}
+
+    <!-- 모집 조건 -->
+    <div class="hideme_mob">
+        <div class="recruit_content_mob">
+            <div class="recruit_title_mob">모집절차</div>
+            <div class="recruit_detail_mob"><strong style="color:#F39926">1차</strong> 서류 모집</div>
+            <div class="recruit_detail_mob" style="margin-left:2.7vw;font-size:3.5vw;">기획/디자인, Front-End, Back-End <br> <strong>총 3트랙</strong>으로 나누어 모집</div>
+            <div class="recruit_detail_mob" style="margin-top:2.8vw;"><strong style="color:#F39926">2차</strong> 최종 면접</div>
+        </div>
+        <div class="recruit_content_mob">
+            <div class="recruit_title_mob">지원자격</div>
+            <div class="recruit_detail_mob">모든 활동을 <strong style="color:#F39926">성실</strong>히 참여 가능하고</div>
+            <div class="recruit_detail_mob">창업/개발에 <strong style="color:#F39926">열정</strong>과 관심이 많고</div>
+            <div class="recruit_detail_mob">팀원간의 <strong style="color:#F39926">협업</strong>능력을 가지고 있는</div>
+            <div class="recruit_detail_mob"><strong>연세대학교(서울)</strong> 대학생/대학원생</div>
+        </div>
+        <div class="recruit_content_mob">
+            <div class="recruit_title_mob">정기세션</div>
+            <div class="recruit_detail_mob">매주<strong style="color:#F39926"> 목요일 오후 7시</strong>부터</div>
+            <div class="recruit_detail_mob">약 <strong style="color:#F39926">1~2시간</strong> 동안</div>
+            <div class="recruit_detail_mob"><strong style="color:#F39926">오프라인</strong> 세션 진행</div>
+            <div class="recruit_detail_mob" style="font-size:3.5vw;margin-top: 1.8vw;">* 상황에 따라 <strong>온라인</strong>으로 세션 진행</div>
+        </div>
+    </div>
+
+</div>
+
 
 {% endblock %}
