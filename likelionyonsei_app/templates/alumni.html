@@ -12,7 +12,7 @@
     }
     .container {
       padding:7vw 0vw 6vw 0vw;
-      margin: 0 auto;
+      margin: 0 auto 8vw;
       display: flex;
       flex-wrap: wrap;
     }
@@ -61,7 +61,7 @@
     }
     .arrow-next::after {
       position: absolute;
-      left: 5vw;
+      left: 5.4vw;
       top:1.8vw;
       content: '';
       width: 2vw; /* 사이즈 */
@@ -88,7 +88,7 @@
     }
     .arrow-next-1::after {
       position: absolute;
-      left: 5vw;
+      left: 5.4vw;
       top:1.8vw;
       content: '';
       width: 2vw; /* 사이즈 */
@@ -100,6 +100,95 @@
     #overlay-alumni {
         color: #F39926;
     }
+    #intro_com {
+      background-color:black;
+      height: 30vw;
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+    }
+    #modal-com {
+      border: 0;
+    }
+@media all and (min-width: 401px) {
+  #intro_mob, .card_mob, #modal-mob {display: none;}
+}
+@media all and (max-width:400px) {
+  #intro_com, .card, #modal-com {display: none;}
+  #intro_mob {
+    background-color:black;
+    height: 40vw;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2.5vw;
+  }
+  .arrow-prev-mob, .arrow-next-mob {
+    position: relative;
+    width:3.5vw;
+    height:3.5vw;
+  }
+  .arrow-prev-mob::after {
+    position: absolute;
+    top:2.6vw;
+    right: 5vw;
+    content: '';
+    width: 3vw; /* 사이즈 */
+    height: 3vw; /* 사이즈 */
+    border-top: 0.8vw solid white; /* 선 두께 */
+    border-right: 0.8vw solid white; /* 선 두께 */
+    transform: rotate(225deg);
+  }
+  .arrow-next-mob::after {
+    position: absolute;
+    left: 5.4vw;
+    top:2.6vw;
+    content: '';
+    width: 3vw; /* 사이즈 */
+    height: 3vw; /* 사이즈 */
+    border-top: 0.8vw solid white; /* 선 두께 */
+    border-right: 0.8vw solid white; /* 선 두께 */
+    transform: rotate(45deg); /* 각도 */
+  }
+  .arrow-prev-mob-1, .arrow-next-mob-1 {
+    position: relative;
+    width:3.5vw;
+    height:3.5vw;
+  }
+  .arrow-prev-mob-1::after {
+      position: absolute;
+      top:2.6vw;
+      right: 5vw;
+      content: '';
+      width: 3vw; /* 사이즈 */
+      height: 3vw; /* 사이즈 */
+      border-top: 0.8vw solid grey; /* 선 두께 */
+      border-right: 0.8vw solid grey; /* 선 두께 */
+      transform: rotate(225deg);
+  }
+  .arrow-next-mob-1::after {
+    position: absolute;
+    left: 5.4vw;
+    top:2.6vw;
+    content: '';
+    width: 3vw; /* 사이즈 */
+    height: 3vw; /* 사이즈 */
+    border-top: 0.8vw solid grey; /* 선 두께 */
+    border-right: 0.8vw solid grey; /* 선 두께 */
+    transform: rotate(45deg); /* 각도 */
+  }
+  .card_mob {
+    box-shadow: 0 0 1vw rgba(0,0,0,0.2);
+    overflow: hidden;
+    border-radius: 3vw;
+    border: 0;
+    margin: 0vw 5vw 12vw 5vw;
+    width:54vw;
+    padding: 0;
+  }
+  #modal-mob {
+    border: 0;
+  }
+}
 </style>
 
 <!-- 새 구성원 추가 -->
@@ -116,16 +205,16 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <form action="{% url 'add_member' %}" method="post" enctype="multipart/form-data" style="overflow-x: auto">
-              {% csrf_token %}
-              <div class="modal-body">
-                  <table>
-                      {{member_form.as_table}}
-                  </table>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">추가하기</button>
-              </div>
+            {% csrf_token %}
+            <div class="modal-body">
+                <table>
+                    {{member_form.as_table}}
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">추가하기</button>
+            </div>
           </form>
         </div>
       </div>
@@ -133,76 +222,128 @@
 </div>
 {% endif %}
 
-<div>
-  <div style="background-color:black;height: 30vw;display: flex;flex-direction: column;margin: auto;">
-    <div style="margin: auto;">
-      <!-- 구성원 나열 Paginator -->
-      <div style="font-size: 4vw;font-family: 'Noto Sans KR';text-align: center;color:white;margin: 1.5vw auto;font-weight: bold;">
-        LIKELION <span style="color:#F39926;font-weight: bold;">&#215;</span> YONSEI MEMBER
-      </div>
-      <div style="display:flex;color:#F39926;justify-content: center;">
-        {% if page is not 1 %}
-          <a href="?page={{page|add:-1}}"><span class="arrow-prev"></span></a>
-          <!-- <img src="{% static 'left.png' %}" style="width:2.5vw;height:2.5vw;margin: auto 0;background-color: white;border-radius: 50%;"> -->
-        {% else %}
-          <div><span class="arrow-prev-1"></span></div>
-        {% endif %}
-    
-        <div style="font-size: 3.5vw;font-weight:bold;font-family: 'Noto Sans KR', sans-serif;margin: auto 1.5vw;">{{page}}기</div>
-        
-        {% if page is not latest_num %}
-          <a href="?page={{page|add:1}}"><span class="arrow-next"></span></a>
-          <!-- <img src="{% static 'right2.png' %}" style="width:2.5vw;height:2.5vw;margin: auto 0;background-color: white;border-radius: 50%;"> -->
-        {% else %}
-          <div><span class="arrow-next-1"></span></div>
-        {% endif %}
-      </div>  
-    </div>  
-  </div>
-    
-    <!-- 구성원 나열 -->
-    <div class="container">
-        {% for member in members %}
-        <a data-bs-toggle="modal" data-bs-target="#exampleModal-{{member.id}}" style="margin:auto">
-        <div  class="card">
-          {% if member.photo %}
-          <img class="card-img-top" src="{{member.photo.url}}" alt="Card image cap">
-          {% else %}
-          <img src="{% static '멋사로고.png' %}">
-          {% endif %}
-          <div class="card-body">
-            <div class="card-title">{{member.name}}</div>
-            <p class="card-text">{{member.moto}}</p>
-          </div>
-        </div>
-        </a>
-      <!-- Modal -->
-        <div class="modal fade" id="exampleModal-{{member.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top:0;">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content" style="border:0;">
-                <div class="modal-header" style="color:#F39926;background-color:black;font-size:1.7vw;font-weight: bold;font-family: 'Noto Sans KR', sans-serif;">
-                  <div class="modal-title" id="exampleModalLabel" style="margin-left:1vw;">{{page}}기 {{member.name}}</div>
-                  <img src="{% static 'cancel.png' %}" style="width:1.85vw; height: 1.8vw;margin-right: 1vw; background-color: white;" type="button" data-bs-dismiss="modal" aria-label="Close">
-                </div>
-                <div class="modal-body" style="padding: 1.8vw 2.2vw 2.5vw 2.2vw">
-                    {% if member.photo %}
-                    <img src="{{member.photo.url}}" style="width:50%; height:auto;border-radius: 5%;">
-                    {% else %}
-                    <img src="{% static '멋사로고.png' %}" style="width:50%; height:auto;border-radius: 5%;">
-                    {% endif %}
-                    <div style="font-family:'Noto Sans KR', sans-serif;font-weight: bold;font-size:1.8vw;margin:1.8vw 0 0.5vw 0;">1. 자기소개</div>
-                    <div>{{member.detail1}}</div>
-                    <div style="font-family:'Noto Sans KR', sans-serif;font-weight: bold;font-size:1.8vw;margin:1.8vw 0 0.5vw 0;">2. 멋쟁이사자처럼을 통해 얻은 것</div>
-                    <div>{{member.detail2}}</div>
-                </div>
-              </div>
-            </div>
-        </div>
-        {% endfor %}
+<div id="intro_com">
+  <div style="margin: auto;">
+    <!-- 구성원 나열 Paginator -->
+    <div style="font-size: 4vw;font-family: 'Noto Sans KR';text-align: center;color:white;margin: 1.5vw auto;font-weight: bold;">
+      LIKELION <span style="color:#F39926;font-weight: bold;">&#215;</span> YONSEI MEMBER
     </div>
+    <div style="display:flex;color:#F39926;justify-content: center;">
+      {% if page is not 1 %}
+        <a href="?page={{page|add:-1}}"><span class="arrow-prev"></span></a>
+        <!-- <img src="{% static 'left.png' %}" style="width:2.5vw;height:2.5vw;margin: auto 0;background-color: white;border-radius: 50%;"> -->
+      {% else %}
+        <div><span class="arrow-prev-1"></span></div>
+      {% endif %}
   
+      <div style="font-size: 3.5vw;font-weight:bold;font-family: 'Noto Sans KR', sans-serif;margin: auto 1.5vw;">{{page}}기</div>
+      
+      {% if page is not latest_num %}
+        <a href="?page={{page|add:1}}"><span class="arrow-next"></span></a>
+        <!-- <img src="{% static 'right2.png' %}" style="width:2.5vw;height:2.5vw;margin: auto 0;background-color: white;border-radius: 50%;"> -->
+      {% else %}
+        <div><span class="arrow-next-1"></span></div>
+      {% endif %}
+    </div>  
+  </div>  
 </div>
 
+<div id="intro_mob">
+  <div style="margin: auto;">
+    <!-- 구성원 나열 Paginator 모바일 버전 -->
+    <div style="font-size: 5.5vw;font-family: 'Noto Sans KR';text-align: center;color:white;margin: 2vw auto;font-weight: bold;">
+      LIKELION <span style="color:#F39926;font-weight: bold;">&#215;</span> YONSEI MEMBER
+    </div>
+    <div style="display:flex;color:#F39926;justify-content: center;">
+      {% if page is not 1 %}
+        <a href="?page={{page|add:-1}}"><span class="arrow-prev-mob"></span></a>
+      {% else %}
+        <div><span class="arrow-prev-mob-1"></span></div>
+      {% endif %}
+  
+      <div style="font-size: 5.2vw;font-weight:bold;font-family: 'Noto Sans KR', sans-serif;margin: auto 1.5vw;">{{page}}기</div>
+      
+      {% if page is not latest_num %}
+        <a href="?page={{page|add:1}}"><span class="arrow-next-mob"></span></a>
+      {% else %}
+        <div><span class="arrow-next-mob-1"></span></div>
+      {% endif %}
+    </div>  
+  </div>  
+</div>
+
+    
+<!-- 구성원 나열 -->
+<div class="container">
+  {% for member in members %}
+  <a data-bs-toggle="modal" data-bs-target="#exampleModal-{{member.id}}" style="margin:auto">
+  <div class="card">
+    {% if member.photo %}
+    <img class="card-img-top" src="{{member.photo.url}}" alt="Card image cap">
+    {% else %}
+    <img src="{% static '멋사로고.png' %}">
+    {% endif %}
+    <div class="card-body">
+      <div class="card-title">{{member.name}}</div>
+      <p class="card-text">{{member.moto}}</p>
+    </div>
+  </div>
+  <!-- 구성원 나열 모바일 버전 -->
+  <div  class="card_mob">
+    {% if member.photo %}
+    <img style="height: 54vw;width: 54vw" src="{{member.photo.url}}" alt="Card image cap">
+    {% else %}
+    <img src="{% static '멋사로고.png' %}">
+    {% endif %}
+    <div style="height:31vw; padding:4.3vw; background-color: rgba(165, 162, 162, 0.1);">
+      <div style="font-weight: 600; font-size: 5vw; font-family: 'Noto Sans KR', sans-serif;">{{member.name}}</div>
+      <p style="font-size: 4vw; margin-top: 2vw;">{{member.moto}}</p>
+    </div>
+  </div>
+  </a>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal-{{member.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top:0;">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" id="modal-com">
+          <div class="modal-header" style="color:#F39926;background-color:black;font-size:1.7vw;font-weight: bold;font-family: 'Noto Sans KR', sans-serif;">
+            <div class="modal-title" id="exampleModalLabel" style="margin-left:1vw;">{{page}}기 {{member.name}}</div>
+            <img src="{% static 'cancel.png' %}" style="width:1.85vw; height: 1.8vw;margin-right: 1vw; background-color: white;" type="button" data-bs-dismiss="modal" aria-label="Close">
+          </div>
+          <div class="modal-body" style="padding: 1.8vw 2.2vw 2.5vw 2.2vw">
+              {% if member.photo %}
+              <img src="{{member.photo.url}}" style="width:50%; height:auto;border-radius: 5%;">
+              {% else %}
+              <img src="{% static '멋사로고.png' %}" style="width:50%; height:auto;border-radius: 5%;">
+              {% endif %}
+              <div style="font-family:'Noto Sans KR', sans-serif;font-weight: bold;font-size:1.8vw;margin:1.8vw 0 0.5vw 0;">1. 자기소개</div>
+              <div>{{member.detail1}}</div>
+              <div style="font-family:'Noto Sans KR', sans-serif;font-weight: bold;font-size:1.8vw;margin:1.8vw 0 0.5vw 0;">2. 멋쟁이사자처럼을 통해 얻은 것</div>
+              <div>{{member.detail2}}</div>
+          </div>
+        </div>
+        <!-- Modal 모바일 버전 -->
+        <div class="modal-content" id="modal-mob">
+          <div class="modal-header" style="color:#F39926;background-color:black;font-size:5vw;font-weight: bold;font-family: 'Noto Sans KR', sans-serif;">
+            <div class="modal-title" id="exampleModalLabel" style="margin-left:1vw;">{{page}}기 {{member.name}}</div>
+            <img src="{% static 'cancel.png' %}" style="width:4.55vw; height: 4.5vw;margin-right: 1vw; background-color: white;" type="button" data-bs-dismiss="modal" aria-label="Close">
+          </div>
+          <div class="modal-body" style="padding: 5.5vw 5.5vw 9vw 5.5vw">
+              {% if member.photo %}
+              <img src="{{member.photo.url}}" style="width:50%; height:auto;border-radius: 5%;">
+              {% else %}
+              <img src="{% static '멋사로고.png' %}" style="width:50%; height:auto;border-radius: 5%;">
+              {% endif %}
+              <div style="font-family:'Noto Sans KR', sans-serif;font-weight: bold;font-size:5vw;margin:5.5vw 0 1.1vw 0;">1. 자기소개</div>
+              <div style="font-size:4vw;">{{member.detail1}}</div>
+              <div style="font-family:'Noto Sans KR', sans-serif;font-weight: bold;font-size:5vw;margin:5.5vw 0 1.1vw 0;">2. 멋쟁이사자처럼을 통해 얻은 것</div>
+              <div style="font-size:4vw;">{{member.detail2}}</div>
+          </div>
+        </div>
+
+      </div>
+  </div>
+  {% endfor %}
+</div>
 
 <script>
   /*세부 메뉴바*/
