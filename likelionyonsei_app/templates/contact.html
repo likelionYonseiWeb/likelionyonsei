@@ -41,10 +41,62 @@
     #overlay-contact {
         color: #F39926;
     }
-
+    #contact_com {
+        display: flex;
+        justify-content:space-around;
+        margin: 5vw 15vw 12vw 15vw;
+    }
+@media all and (min-width:401px) {
+    #contact_mob {display: none;}
+}
+@media all and (max-width:401px) {
+    #contact_com {display: none;}
+    #contact_mob {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 24.4vw;
+    }
+    .contact_title_mob {
+        text-align:center;
+        font-size:5.7vw;
+        font-weight:bold;
+        margin:10vw 0 1.5vw 0;
+    }
+    .contact_content_mob {
+        display:flex;
+        flex-direction:column;
+        width: 45vw;
+        border-radius: 2.5vw;
+        background-color: #eeee;
+        margin: 0 auto;
+        height: 47vw;
+    }
+    .contact_img_mob {
+        display: flex;
+        justify-content: center;
+        margin: 4vw auto;
+        flex-grow: 3;
+    }
+    .contact_mail_mob {
+        text-align: center;
+        color:white;
+        border-radius: 0 0vw 2vw 2vw;
+        padding-top: 3vw;
+        font-size: 3.7vw;
+        font-weight: bold;
+        margin: 0;
+        flex-grow: 1;
+    }
+    .img {
+        width: 20vw;
+        height: 20vw;
+        margin-top: 3.5vw;
+    }
+}
 </style>
 
-<div style="display: flex;justify-content:space-around; margin: 5vw 15vw 12vw 15vw;">
+<!-- 문의하기 -->
+<div id="contact_com">
     <div styl="border:0;">
         <div class="contact_title"><span style="color:#F39926">Mail</span></div>
         <div class="contact_content">
@@ -76,6 +128,43 @@
                 </div>
             </a>
             <div class="contact_mail" style="background-color: #c464a4;border: 0;">@likelion_yonsei</div>    
+        </div>    
+    </div>
+</div>
+
+<!-- 문의하기 모바일 버전 -->
+<div id="contact_mob">
+    <div style="display:flex;flex-direction:column">
+        <div class="contact_title_mob" style="margin-top:8vw"><span style="color:#F39926">Mail</span></div>
+        <div class="contact_content_mob">
+            <a href="mailto:yonsei@likelion.org" style="height:35vw">
+                <div class="contact_img_mob" >
+                    <img src="{% static 'gmail2.png' %}" class="img">
+                </div>
+            </a>
+            <div class="contact_mail_mob" style="background-color: #F39926;border: 0">yonsei@likelion.org</div>    
+        </div>    
+    </div>
+    <div>
+        <div class="contact_title_mob"><span style="color:rgb(33, 60, 148)">Facebook</span></div>
+        <div class="contact_content_mob">
+            <a href="https://www.facebook.com/yonsei.likelion" target="_blank" style="height:35vw">
+                <div class="contact_img_mob">
+                    <img src="{% static 'facebook.png' %}" class="img">
+                </div>
+            </a>
+            <div class="contact_mail_mob" style="background-color: rgb(33, 60, 148);border: 0;">@yonsei.likelion</div>    
+        </div>    
+    </div>
+    <div>
+        <div class="contact_title_mob"><span style="color:#c464a4">Instagram</span></div>
+        <div class="contact_content_mob">
+            <a href="https://www.instagram.com/likelion_yonsei" target="_blank" style="height:35vw">
+                <div class="contact_img_mob">
+                    <img src="{% static 'instagram.png' %}" class="img">
+                </div>
+            </a>
+            <div class="contact_mail_mob" style="background-color: #c464a4;border: 0;">@likelion_yonsei</div>    
         </div>    
     </div>
 </div>
