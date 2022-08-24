@@ -8,7 +8,7 @@
 <meta property="og:url" content="http://likelionyonsei.com">
 <meta property="og:title" content="Likelion Yonsei">
 <meta property="og:type" content="website">
-<meta property="og:image" content="{% static '로고.png' %}" width="400px" height="200px">
+<meta property="og:image" content="{% static '썸네일4.png' %}" width="400px" height="200px">
 <meta property="og:description" content="멋쟁이사자처럼 연세대학교 공식 사이트 ">
 <link rel="icon" href="{% static 'favicon.png' %}">
 <!-- Bootstrap -->
@@ -39,7 +39,10 @@
         justify-content: space-around;
         height: 5vw;
     }
-    #header_mob {
+    .header_mob {
+        display: none;
+    }
+    #header_video {
         display: none;
     }
     .menu-overlay {
@@ -84,7 +87,7 @@
     #header_com {
         display: none;
     }
-    #header_mob {
+    .header_mob {
         height: 17.5vw;
     }
     header{
@@ -263,7 +266,7 @@
     </div>
 
     <!-- 상단 navbar(mob 버전)-->
-    <div id="header_mob">
+    <div class="header_mob" id="header_video">
         <header>
             <a href="{% url 'home' %}" style="margin:auto;">
                 <img src="{% static '멋사로고.png' %}" style="width:13vw;height:14vw;">

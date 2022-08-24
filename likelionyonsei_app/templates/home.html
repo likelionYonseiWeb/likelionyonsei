@@ -27,7 +27,7 @@
         margin: 0 8.5vw 2.5vw 0;
     }
     #fadein {
-        animation: fadein 2s;
+        animation: fadein 5s;
     }
     @keyframes fadein {
         from {
@@ -56,14 +56,15 @@
         font-weight: bold;
         color:black;
         background-color: white;
-        font-size:1.8vw;
         border-radius: 1vw;
     }
     #td_div {
         margin: 1vw 0;
+        font-size: 2vw
     }
     #td_title {
         background-color: #F39926;
+        font-size:2vw
     }
     .curriculum {
         text-align: center;
@@ -72,12 +73,15 @@
         border-spacing: 2vw;
         border-collapse: separate;
         margin-top: 1vw;
-        font-family:'Noto Sans KR', sans-serif;;
+        font-family:'Noto Sans KR', sans-serif;
     }
     #td_month {
         text-align:left;
         background-color: #182655;
         color:white;
+        font-size: 2vw;
+        font-family:'Noto Sans KR', sans-serif;
+        font-weight: bold;
     }
     #td_box {
         width: 28%;
@@ -136,10 +140,10 @@
     #part2_mob {
         color:white;
         background-color: black;
-        padding: 8vw 8vw 14vw 8vw;
+        padding: 5vw 8vw 14vw 8vw;
     }
     .hideme1 {
-        animation: fadein 2s;
+        animation: fadein 3s;
     }
     #overlay-home {
         color: #F39926;
@@ -156,13 +160,25 @@
         color:black;
         padding: 9vw 6vw 22.5vw 6vw;
     }
+    #header_video {
+        height: 15.5vw;
+        border: 0;
+    }
+    #td_div_mob {
+        margin: 1vw 0;
+        font-size: 3.1vw;
+    }
+    #td_title_mob {
+        background-color: #F39926;
+        font-size:3.1vw;
+    }
 }
 </style>
 
 <!-- 파트1: 영상 & 문구 -->
 <div id="part1_com">
     <video muted autoplay loop width="100%" style="z-index: -2;position: relative;display: table-cell;">
-        <source src="{% static '노트북_3.mp4' %}" type="video/mp4" style="background-color:black;">
+        <source src="{% static '노트북_3.mp4' %}" type="video/mp4" style="width: 100%;">
         <strong>Your browser does not support the video tag</strong>    
     </video>
     <div style="position:absolute; top:5vw; margin-top:2.8vw; display: flex; width: 100%;">
@@ -186,7 +202,7 @@
 <!-- 모바일 버전 -->
 <div id="part1_mob">
     <video muted autoplay playsinline loop width="100%" style="z-index: -2;position: relative;display: table-cell;">
-        <source src="{% static '노트북_해상도2.mp4' %}" type="video/mp4" style="background-color:black;">
+        <source src="{% static '노트북_해상도2.mp4' %}" type="video/mp4" style="background-color: transparent;">
         <strong>Your browser does not support the video tag</strong>    
     </video>
     <div style="position:absolute; top:18vw; margin-top:2.8vw; display: flex; width: 100%;">
@@ -239,7 +255,7 @@
                     var bottom_of_window = $(window).scrollTop() + $(window).height();
 
                     if( bottom_of_window > bottom_of_object/2 ){
-                        $(this).animate({'opacity':'1', 'animation':'fadein'}, 2000);
+                        $(this).animate({'opacity':'1', 'animation':'fadein'}, 4000);
                     }
                 }); 
             });
@@ -248,6 +264,7 @@
 </div>
 
 <!-- 모바일 버전 -->
+<div style="color:black;background-color:black;width:100%;height:5vw;position: absolute;top:71vw;"></div>
 <div id="part2_mob">
     <div style="display:flex; margin-bottom: 6vw;margin-top: 2vw;">
         <span style="font-size:7vw;font-weight: bold;padding-right: 4vw;font-family:Arial;">LIKE LION</span>
@@ -456,7 +473,10 @@
             width: 48vw;
         }
         a:hover {color: inherit;}
-
+        video {
+            -webkit-filter: contrast(101%); 
+            filter: contrast(101%);
+        }
     </style>
     
     <div style="margin-top:13.5vw;">
@@ -582,76 +602,76 @@
 <!-- 모바일 버전 -->
 <div id="part4_mob">
     <div style="text-align: center;font-family:Arial; font-weight:bold;font-size: 7vw;color:white;margin: 4vw 0 7vw 0;">CURRICULUM</div>
-    <div style="text-align:center;color:white;font-family:'Noto Sans KR', sans-serif;font-size: 4vw;">2월 ~ 3월</div>
+    <div style="text-align:center;color:white;font-family:'Noto Sans KR', sans-serif;font-size: 5vw;font-weight: bold;">2월 ~ 3월</div>
     <table style="margin-top:1.5vw;" class="curriculum">
         <tr>
-            <td style="width: 100%;height: 8vw;" class="detail">신입 기수 모집</td>
+            <td style="width: 100%;height: 8vw;font-size: 3.5vw;" class="detail">신입 기수 모집</td>
         </tr>
     </table>
-    <div style="margin-top:7.5vw;text-align:center;color:white;font-family:'Noto Sans KR', sans-serif;font-size: 4vw;">3월 ~ 6월</div>
+    <div style="margin-top:7.5vw;text-align:center;color:white;font-family:'Noto Sans KR', sans-serif;font-size: 5vw;font-weight: bold;">3월 ~ 6월</div>
     <table class="curriculum" >
         <tr style="width: 100%;height: 8vw;">
-            <td id="td_title" class="detail">
+            <td id="td_title_mob" class="detail">
                 기획/디자인 트랙
             </td>
-            <td id="td_title" class="detail">
+            <td id="td_title_mob" class="detail">
                 Front-End 트랙
             </td>
-            <td id="td_title" class="detail">
+            <td id="td_title_mob" class="detail">
                 Back-End 트랙
             </td>
         </tr>
         <tr style="width: 100%;height: 30vw;">
             <td id="td_box" class="detail">
-                <div id="td_div">HTML/CSS</div>
-                <div id="td_div">Python</div>
-                <div id="td_div">기획/디자인</div>
-                <div id="td_div">Git</div>
+                <div id="td_div_mob">HTML/CSS</div>
+                <div id="td_div_mob">Python</div>
+                <div id="td_div_mob">기획/디자인</div>
+                <div id="td_div_mob">Git</div>
             </td>
             <td id="td_box" class="detail">
-                <div id="td_div">HTML/CSS</div>
-                <div id="td_div">Python</div>
-                <div id="td_div">Javascript/React</div>
-                <div id="td_div">Git</div>
+                <div id="td_div_mob">HTML/CSS</div>
+                <div id="td_div_mob">Python</div>
+                <div id="td_div_mob">Javascript/React</div>
+                <div id="td_div_mob">Git</div>
             </td>
             <td id="td_box" class="detail">
-                <div id="td_div">HTML/CSS</div>
-                <div id="td_div">Python</div>
-                <div id="td_div">Django</div>
-                <div id="td_div">Git</div>
+                <div id="td_div_mob">HTML/CSS</div>
+                <div id="td_div_mob">Python</div>
+                <div id="td_div_mob">Django</div>
+                <div id="td_div_mob">Git</div>
             </td>
         </tr>
     </table>
-    <div style="margin-top:7.5vw;text-align:center;color:white;font-family:'Noto Sans KR', sans-serif;font-size: 4vw;">7월 ~ 12월</div>
+    <div style="margin-top:7.5vw;text-align:center;color:white;font-family:'Noto Sans KR', sans-serif;font-size: 5vw;font-weight: bold;">7월 ~ 12월</div>
     <table class="curriculum">
         <tr style="width: 100%;height: 8vw;">
-            <td id="td_title" class="detail">
+            <td id="td_title_mob" class="detail">
                 팀 프로젝트
             </td>
-            <td id="td_title" class="detail">
+            <td id="td_title_mob" class="detail">
                 대회
             </td>
-            <td id="td_title" class="detail">
+            <td id="td_title_mob" class="detail">
                 알럼나이 행사
             </td>
         </tr>
         <tr style="width: 100%;height: 30vw;">
             <td id="td_box" class="detail">
-                <div id="td_div">서비스 출시</div>
+                <div id="td_div_mob">서비스 출시</div>
             </td>
             <td id="td_box" class="detail">
-                <div id="td_div">아이디어톤</div>
-                <div id="td_div">해커톤</div>
-                <div id="td_div">신촌톤</div>
-                <div id="td_div">기업 연계 행사</div>
+                <div id="td_div_mob">아이디어톤</div>
+                <div id="td_div_mob">해커톤</div>
+                <div id="td_div_mob">신촌톤</div>
+                <div id="td_div_mob">기업 연계 행사</div>
             </td>
             <td id="td_box" class="detail">
-                <div id="td_div">동문 네트워킹</div>
-                <div id="td_div">초청 특강</div>
+                <div id="td_div_mob">동문 네트워킹</div>
+                <div id="td_div_mob">초청 특강</div>
             </td>
         </tr>
     </table>
-    <div style="color:white; margin: 7vw  2vw 3vw 0; font-size: 1vw;text-align: right;">* 위 내용은 해마다 상이할 수 있습니다</div>
+    <div style="color:white; margin: 7vw  2vw 3vw 0; font-size: 2vw;text-align: right;">* 위 내용은 해마다 상이할 수 있습니다</div>
 </div>
 
 <!-- 프로젝트 추가 -->
@@ -796,7 +816,7 @@
             margin: 2vw;
             border-radius: 3vw;
             border: 0.1vw solid rgba(134, 134, 134, 0.24);
-            height: 58vw;
+            height: 55vw;
             width: 27vw;
             box-shadow: 0px 0px 1.5vw rgba(0, 0, 0, 0.16);
         }
@@ -822,7 +842,7 @@
                             <img src="{% static '멋사로고.png' %}" style="max-width:27vw; height: 18vw;">
                             {% endif %}
                         </div>
-                        <div style="text-align: center;font-family: 'Noto Sans KR', sans-serif;font-size: 2.2vw;padding: 6vw 1.5vw 3vw 1.5vw;color:rgb(105, 105, 105);">
+                        <div style="text-align: center;font-family: 'Noto Sans KR', sans-serif;font-size: 3vw;color:red;padding: 6vw 0 3vw 0;color:rgb(105, 105, 105);">
                             {{project.detail}}
                         </div>
                     </a>

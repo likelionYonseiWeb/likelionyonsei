@@ -313,16 +313,16 @@
               {% else %}
               <img src="{% static '멋사로고.png' %}" style="width:50%; height:auto;border-radius: 5%;">
               {% endif %}
-              <div style="font-family:'Noto Sans KR', sans-serif;font-weight: bold;font-size:1.8vw;margin:1.8vw 0 0.5vw 0;">1. 자기소개</div>
-              <div>{{member.detail1}}</div>
-              <div style="font-family:'Noto Sans KR', sans-serif;font-weight: bold;font-size:1.8vw;margin:1.8vw 0 0.5vw 0;">2. 멋쟁이사자처럼을 통해 얻은 것</div>
-              <div>{{member.detail2}}</div>
+              <div style="font-family:'Noto Sans KR', sans-serif;font-weight: bold;font-size:2vw;margin:1.8vw 0 0.5vw 0;">1. 자기소개</div>
+              <div style="font-size: 1.3vw;">{{member.detail1}}</div>
+              <div style="font-family:'Noto Sans KR', sans-serif;font-weight: bold;font-size:2vw;margin:1.8vw 0 0.5vw 0;">2. 멋쟁이사자처럼을 통해 얻은 것</div>
+              <div style="font-size: 1.3vw;">{{member.detail2}}</div>
           </div>
         </div>
         <!-- Modal 모바일 버전 -->
         <div class="modal-content" id="modal-mob">
           <div class="modal-header" style="color:#F39926;background-color:black;font-size:5vw;font-weight: bold;font-family: 'Noto Sans KR', sans-serif;">
-            <div class="modal-title" id="exampleModalLabel" style="margin-left:1vw;">{{page}}기 {{member.name}}</div>
+            <div class="modal-title" id="exampleModalLabel" style="margin-left:1vw;font-size:6vw;">{{page}}기 {{member.name}}</div>
             <img src="{% static 'cancel.png' %}" style="width:4.55vw; height: 4.5vw;margin-right: 1vw; background-color: white;" type="button" data-bs-dismiss="modal" aria-label="Close">
           </div>
           <div class="modal-body" style="padding: 5.5vw 5.5vw 9vw 5.5vw">
@@ -331,10 +331,10 @@
               {% else %}
               <img src="{% static '멋사로고.png' %}" style="width:50%; height:auto;border-radius: 5%;">
               {% endif %}
-              <div style="font-family:'Noto Sans KR', sans-serif;font-weight: bold;font-size:5vw;margin:5.5vw 0 1.1vw 0;">1. 자기소개</div>
-              <div style="font-size:4vw;">{{member.detail1}}</div>
-              <div style="font-family:'Noto Sans KR', sans-serif;font-weight: bold;font-size:5vw;margin:5.5vw 0 1.1vw 0;">2. 멋쟁이사자처럼을 통해 얻은 것</div>
-              <div style="font-size:4vw;">{{member.detail2}}</div>
+              <div style="font-family:'Noto Sans KR', sans-serif;font-weight: bold;font-size:6vw;margin:5.5vw 0 1.1vw 0;">1. 자기소개</div>
+              <div style="font-size:4.5vw;">{{member.detail1}}</div>
+              <div style="font-family:'Noto Sans KR', sans-serif;font-weight: bold;font-size:6vw;margin:5.5vw 0 1.1vw 0;">2. 멋쟁이사자처럼을 통해 얻은 것</div>
+              <div style="font-size:4.5vw;">{{member.detail2}}</div>
           </div>
         </div>
 
