@@ -30,3 +30,5 @@ urlpatterns = [
     path('add_company/', add_company, name="add_company"),
     path('add_project/', add_project, name="add_project"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'likelionyonsei_app.views.page_not_found'

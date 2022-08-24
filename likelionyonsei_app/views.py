@@ -87,3 +87,6 @@ def add_project(request):
         if form.is_valid():
             form.save()
     return redirect('home')
+
+def page_not_found(request, exception):
+    return render(request, '404.html')

@@ -124,7 +124,7 @@
         padding: 6vw 6vw 4vw 6vw;
     }
 @media all and (min-width:401px) {
-    #part1_mob, #part2_mob, #part3_mob, #part4_mob, #part5_mob {
+    #part1_mob, #part2_mob, #part2_hiddenbox, #part3_mob, #part4_mob, #part5_mob {
         display: none;
     }
 }
@@ -143,7 +143,7 @@
         padding: 5vw 8vw 14vw 8vw;
     }
     .hideme1 {
-        animation: fadein 3s;
+        animation: fadein 6s;
     }
     #overlay-home {
         color: #F39926;
@@ -212,7 +212,7 @@
             <div class="hack" style="font-size:12vw;">Life</div>    
         </div>
         <div style="flex-grow:1; margin-top: 19vw;">
-            <div id="fadein">
+            <div class="hideme1">
                 <div class="idea" style="font-size:5.5vw;">내 아이디어를</div>
                 <div class="idea" style="font-size:5.5vw;"><span style="background-color:#F39926;color: black;">내 손으로</span> 실현하다</div>    
             </div>
@@ -264,7 +264,7 @@
 </div>
 
 <!-- 모바일 버전 -->
-<div style="color:black;background-color:black;width:100%;height:5vw;position: absolute;top:71vw;"></div>
+<div id ="part2_hiddenbox" style="color:black;background-color:black;width:100%;height:5vw;position: absolute;top:71vw;"></div>
 <div id="part2_mob">
     <div style="display:flex; margin-bottom: 6vw;margin-top: 2vw;">
         <span style="font-size:7vw;font-weight: bold;padding-right: 4vw;font-family:Arial;">LIKE LION</span>

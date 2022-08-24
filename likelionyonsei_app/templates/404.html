@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+@media all and (min-width: 401px ){
+    #error_message {
+        text-align: center;
+    }
+
+    h2 {
+        margin-top: 50px;
+    }
+
+    #error_message_mob {
+        display: none;
+    }
+}
+@media all and (max-width: 400px) {
+    #error_message {
+        display: none;
+    }
+    #error_message_mob {
+        text-align: center;
+    }
+    h2 {
+        margin-top: 50px;
+    }
+} 
+</style>
+
+<div id="error_message">
+    <h2 style="margin-bottom:1vw;font-size:2vw">죄송합니다. 페이지를 사용할 수 없습니다.</h2>
+    <span style="font-size:1vw;">클릭하신 링크가 잘못되었거나 페이지가 삭제되었습니다.</span>
+    <a id="hover" href="{% url 'home' %}" style="color:#F39926; font-size: 1vw;">홈으로 돌아가기</a>
+</div>
+
+<div id="error_message_mob">
+    <h2 style="margin-bottom:4vw;font-size:4.5vw">죄송합니다. 페이지를 사용할 수 없습니다.</h2>
+    <div style="margin-bottom:3vw;font-size:3vw;">클릭하신 링크가 잘못되었거나 페이지가 삭제되었습니다.</div>
+    <a id="hover" href="{% url 'home' %}" style="color:#F39926; font-size: 5vw;font-weight: bold;">홈으로 돌아가기</a>
+</div>
+
+{% endblock %}
