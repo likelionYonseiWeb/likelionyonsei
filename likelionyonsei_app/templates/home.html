@@ -27,7 +27,7 @@
         margin: 0 8.5vw 2.5vw 0;
     }
     #fadein {
-        animation: fadein 3s;
+        animation: fadein 4s;
     }
     @keyframes fadein {
         from {
@@ -178,7 +178,7 @@
 <!-- 파트1: 영상 & 문구 -->
 <div id="part1_com">
     <video muted autoplay loop width="100%" style="z-index: -2;position: relative;display: table-cell;">
-        <source src="{% static '노트북_3.mp4' %}" type="video/mp4" style="background-color:black;">
+        <source src="{% static '노트북_3.mp4' %}" type="video/mp4" style="width: 100%;">
         <strong>Your browser does not support the video tag</strong>    
     </video>
     <div style="position:absolute; top:5vw; margin-top:2.8vw; display: flex; width: 100%;">
@@ -202,7 +202,7 @@
 <!-- 모바일 버전 -->
 <div id="part1_mob">
     <video muted autoplay playsinline loop width="100%" style="z-index: -2;position: relative;display: table-cell;">
-        <source src="{% static '노트북_해상도2.mp4' %}" type="video/mp4" style="background-color: transparent;">
+        <source src="{% static '반쪽자리.mp4' %}" type="video/mp4" style="background-color: transparent;">
         <strong>Your browser does not support the video tag</strong>    
     </video>
     <div style="position:absolute; top:18vw; margin-top:2.8vw; display: flex; width: 100%;">
@@ -255,7 +255,7 @@
                     var bottom_of_window = $(window).scrollTop() + $(window).height();
 
                     if( bottom_of_window > bottom_of_object/2 ){
-                        $(this).animate({'opacity':'1', 'animation':'fadein'}, 3000);
+                        $(this).animate({'opacity':'1', 'animation':'fadein'}, 4000);
                     }
                 }); 
             });
