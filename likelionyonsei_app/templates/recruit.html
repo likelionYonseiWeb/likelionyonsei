@@ -159,17 +159,34 @@
 
     <!-- 리크루팅 URL 등록 -->
     {% if user.is_authenticated %}
-    <form action="{% url 'recruit' %}" method="post" style="margin: 4vw 0 0 0;">
-        {%csrf_token%}
-        <table style="margin-right: 2vw;display: flex;justify-content:center;">
-            {{form.as_table}}
-        </table>
-        <div style="display: flex;justify-content:center;margin-top: 1.5vw;">
-            <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#memberModal">
-                등록
-            </button>    
+    <div style="display: flex; justify-content:center;">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#foundedModal" style="margin: 5vw 2vw 0 2vw;">
+            리크루팅 URL 등록
+        </button>
+    </div>
+    <div class="modal fade" id="foundedModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content" style="color:black;">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">리크루팅 URL 등록</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{% url 'recruit' %}" method="post">
+                {%csrf_token%}
+                <div class="modal-body">
+                    <table>
+                        {{form.as_table}}
+                    </table>
+                    <div style="margin: 2vw 0 0 0; font-size: 2.0vw;text-align: center;">* 구체적인 시간 설정은 admin 페이지를 통해 입력해주세요 *</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">추가하기</button>
+                </div>
+            </form>
         </div>
-    </form>
+        </div>
+    </div>
     {% endif %}
 
     <!-- 모집 조건 -->
