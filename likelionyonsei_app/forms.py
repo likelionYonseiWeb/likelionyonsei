@@ -11,6 +11,7 @@ class RecruitForm(forms.ModelForm):
             'url': forms.TextInput(attrs={'placeholder':'https://'},),
         }
         labels = {
+            'title': '제목',
             'url': 'URL',
             'start_date': '모집 시작일',
             'end_date': '모집 마감일',
