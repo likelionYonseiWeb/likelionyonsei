@@ -97,7 +97,17 @@
         opacity: 1;
         display:flex;
         flex-direction: column;
-        animation: fadein 2s;
+        animation: fadein_mob 5s;
+    }
+    @keyframes fadein_mob {
+        from {
+            opacity: 0;
+            transform: translateY(-5vw);
+            
+        }
+        to {
+            opacity: 1;
+        }
     }
     .recruit_content_mob {
         background-color: #eeee;

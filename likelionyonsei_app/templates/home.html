@@ -137,13 +137,42 @@
         z-index: -1;
         display: table;
     }
+    .hack_mob {
+        color:rgb(255, 255, 255);
+        font-weight: bold;
+        line-height: 25vw;
+        font-family: Arial;
+        width: 100%;
+        font-size: 23vw;
+    }
+    .idea_mob {
+        color:rgb(255, 255, 255);
+        text-align: right;
+        font-size: 9vw;
+        font-weight: bold;
+        font-family: 'Noto Sans KR', sans-serif;
+        margin: 0 9vw 4vw 0;
+    }
+    #fadein_mob {
+        animation: fadein_mob 7s;
+    }
+    @keyframes fadein_mob {
+        from {
+            opacity: 0;
+            transform: translateY(-7vw);
+            
+        }
+        to {
+            opacity: 1;
+        }
+    }
     #part2_mob {
         color:white;
         background-color: black;
-        padding: 5vw 8vw 14vw 8vw;
+        padding: 7vw 8vw 17vw 8vw;
     }
-    .hideme1 {
-        animation: fadein 6s;
+    .hideme_mob {
+        opacity: 0;
     }
     #overlay-home {
         color: #F39926;
@@ -192,7 +221,7 @@
                 <div class="idea">내 아이디어를</div>
                 <div class="idea"><span style="background-color:#F39926;color: black;">내 손으로</span> 실현하다</div>    
             </div>
-            <div class="idea" style="display: flex;flex-direction:row-reverse;margin-top: 3vw;">
+            <div class="idea" style="display: flex;flex-direction:row-reverse;">
                 <img src="{% static '문구.png' %}" style="width: 43vw;background-color: black;">
             </div>
         </div>
@@ -201,23 +230,23 @@
 
 <!-- 모바일 버전 -->
 <div id="part1_mob">
-    <video muted autoplay playsinline webkit-playsinline loop width="100%" style="z-index: -2;position: relative;display: table-cell;">
-        <source src="{% static '노트북_해상도2.mp4' %}" type="video/mp4" style="background-color: transparent;">
+    <video muted autoplay playsinline webkit-playsinline loop style="width:100%;z-index: -2;position: relative;display: table-cell;">
+        <source src="{% static '노트북_mob.mp4' %}" type="video/mp4" style="background-color: transparent; width: 100%;">
         <strong>Your browser does not support the video tag</strong>    
     </video>
-    <div style="position:absolute; top:18vw; margin-top:2.8vw; display: flex; width: 100%;">
-        <div style="flex-grow:1;">
-            <div class="hack" style="font-size:12vw;">Hack</div>
-            <div class="hack" style="font-size:12vw;">Your</div>
-            <div class="hack" style="font-size:12vw;">Life</div>    
+    <div style="position:absolute; top:26vw; margin-top:2.8vw;width: 100%;">
+        <div style="margin-left: 9vw;">
+            <div class="hack_mob">Hack</div>
+            <div class="hack_mob">Your</div>
+            <div class="hack_mob">Life</div>    
         </div>
-        <div style="flex-grow:1; margin-top: 19vw;">
-            <div class="hideme1">
-                <div class="idea" style="font-size:5.5vw;">내 아이디어를</div>
-                <div class="idea" style="font-size:5.5vw;"><span style="background-color:#F39926;color: black;">내 손으로</span> 실현하다</div>    
+        <div style="margin-top: 20vw;">
+            <div id="fadein_mob">
+                <div class="idea_mob">내 아이디어를</div>
+                <div class="idea_mob" style="margin-bottom:6vw;"><span style="background-color:#F39926;color: black;">내 손으로</span> 실현하다</div>    
             </div>
-            <div class="idea" style="display: flex;flex-direction:row-reverse;margin-top: 3vw;">
-                <img src="{% static '문구.png' %}" style="width: 56vw;background-color: black;">
+            <div class="idea_mob" style="display: flex;flex-direction:row-reverse;margin-top: 3vw;">
+                <img src="{% static '문구.png' %}" style="width: 85vw;background-color: black;">
             </div>
         </div>
     </div>
@@ -264,33 +293,47 @@
 </div>
 
 <!-- 모바일 버전 -->
-<div id ="part2_hiddenbox" style="color:black;background-color:black;width:100%;height:5vw;position: absolute;top:71vw;"></div>
+<div id ="part2_hiddenbox" style="top:181vw;color:black;background-color:black;width:100%;height:5vw;position: absolute;"></div>
 <div id="part2_mob">
-    <div style="display:flex; margin-bottom: 6vw;margin-top: 2vw;">
+    <div style="display:flex; margin-bottom: 8vw;margin-top: 2vw;">
         <span style="font-size:7vw;font-weight: bold;padding-right: 4vw;font-family:Arial;">LIKE LION</span>
         <hr style="border:1px solid white;flex-grow:1; margin-top: 4.8vw;">
     </div>
 
-    <div class="hideme1" style="font-size:4.7vw;text-align: left;margin-left: 3vw;font-weight: bold;">
-        <div style="margin-bottom:2.5vw;"><span style="color:#F39926">멋쟁이 사자처럼</span>은</div>
-        <div style="margin-bottom:2.5vw;">국내 40여개 대학을 대상으로</div>
-        <div style="margin-bottom:2.5vw;"><span style="color:#F39926">프로그래밍 교육</span>을 하며</div>
-        <div style="margin-bottom:2.5vw;">유수의 <span style="color:#F39926">IT</span> 기업들을 <span style="color:#F39926">창업</span>한</div>
-        <div style="margin-bottom:2.5vw;">인재들을 배출했습니다</div>
-        <div style="display: flex;margin-top: 8vw;justify-content: space-between;padding-right: 27vw;">
+    <div class="hideme_mob" style="font-size:5.5vw;text-align: left;margin-left: 3vw;font-weight: bold;">
+        <div style="margin-bottom:3vw;"><span style="color:#F39926">멋쟁이 사자처럼</span>은</div>
+        <div style="margin-bottom:3vw;">국내 40여개 대학을 대상으로</div>
+        <div style="margin-bottom:3vw;"><span style="color:#F39926">프로그래밍 교육</span>을 하며</div>
+        <div style="margin-bottom:3vw;">유수의 <span style="color:#F39926">IT</span> 기업들을 <span style="color:#F39926">창업</span>한</div>
+        <div style="margin-bottom:3vw;">인재들을 배출했습니다</div>
+        <div style="display: flex;margin-top: 9vw;justify-content: space-between;padding-right: 12vw;">
             <div style="display:flex;flex-direction:column;">
-                <img src="{% static '쿼타북.png' %}" class="intro_img" style="margin-bottom:5vw;width:18vw; height: 10vw;border-radius: 1vw;">
-                <img src="{% static '뱅크샐러드.png' %}" class="intro_img" style="width:18vw; height: 10vw;border-radius: 1vw;">
+                <img src="{% static '쿼타북.png' %}" class="intro_img" style="margin-bottom:5vw;width:24vw; height: 13vw;border-radius: 1vw;">
+                <img src="{% static '뱅크샐러드.png' %}" class="intro_img" style="width:24vw; height: 13vw;border-radius: 1vw;">
             </div>
             <div style="display:flex;flex-direction:column;">
-                <img src="{% static '슬리드.png' %}" class="intro_img" style="margin-bottom:5vw;width:18vw; height: 10vw;border-radius: 1vw;">
-                <img src="{% static '비프로.png' %}" class="intro_img" style="width:18vw; height: 10vw;border-radius: 1vw;">
+                <img src="{% static '슬리드.png' %}" class="intro_img" style="margin-bottom:5vw;width:24vw; height: 13vw;border-radius: 1vw;">
+                <img src="{% static '비프로.png' %}" class="intro_img" style="width:24vw; height: 13vw;border-radius: 1vw;">
             </div>
             <div style="display:flex;flex-direction: column-reverse;">
-                <img src="{% static '탈잉.jpg' %}" class="intro_img" style="width:10vw;height: 10vw;border-radius: 1vw;">
+                <img src="{% static '탈잉.jpg' %}" class="intro_img" style="width:13vw;height: 13vw;border-radius: 1vw;">
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            $(window).scroll( function(){
+                $('.hideme_mob').each( function(){
+                    var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+                    var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+                    if( bottom_of_window > bottom_of_object/2 ){
+                        $(this).animate({'opacity':'1', 'animation':'fadein'}, 4000);
+                    }
+                }); 
+            });
+        });
+    </script>
 </div>
 
 <!-- 창업/취업 회사 목록 추가 -->
@@ -832,7 +875,7 @@
                     <a href="{{project.url}}" style="display:flex; flex-direction:column;" target="_blank">
                     {% else %}
                     {% endif %}
-                        <div style="text-align: center;font-family: Noto Sans KR;font-weight: bold; font-size: 5vw;padding: 5.5vw 1vw 4.8vw 1vw;">
+                        <div style="text-align: center;font-family: Noto Sans KR;font-weight: bold; font-size: 5vw;padding: 6vw 1vw 4.8vw 1vw;">
                             {{project.name}}
                         </div>
                         <div style="display:flex;justify-content:center;">
