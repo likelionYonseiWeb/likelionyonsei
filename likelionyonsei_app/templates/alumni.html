@@ -191,37 +191,6 @@
 }
 </style>
 
-<!-- 새 구성원 추가 -->
-{% if user.is_authenticated %}
-<div style="display:flex; justify-content: center;margin: 3vw 0;">
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#memberModal">
-      새 구성원 추가
-  </button>
-  <div class="modal fade" id="memberModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">새 구성원 추가</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <form action="{% url 'add_member' %}" method="post" enctype="multipart/form-data" style="overflow-x: auto">
-            {% csrf_token %}
-            <div class="modal-body">
-                <table>
-                    {{member_form.as_table}}
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">추가하기</button>
-            </div>
-          </form>
-        </div>
-      </div>
-  </div>
-</div>
-{% endif %}
-
 <div id="intro_com">
   <div style="margin: auto;">
     <!-- 구성원 나열 Paginator -->
@@ -270,6 +239,36 @@
   </div>  
 </div>
 
+<!-- 새 구성원 추가 -->
+{% if user.is_authenticated %}
+<div style="display:flex; justify-content: center;margin: 3vw 0;">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#memberModal">
+      새 구성원 추가
+  </button>
+  <div class="modal fade" id="memberModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">새 구성원 추가</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form action="{% url 'add_member' %}" method="post" enctype="multipart/form-data" style="overflow-x: auto">
+            {% csrf_token %}
+            <div class="modal-body">
+                <table>
+                    {{member_form.as_table}}
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">추가하기</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+</div>
+{% endif %}
     
 <!-- 구성원 나열 -->
 <div class="container">
