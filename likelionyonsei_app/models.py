@@ -17,8 +17,8 @@ class Member(models.Model):
         return self.name
 
 class Recruit(models.Model):
-    title = models.CharField(max_length=10)
-    url = models.CharField(max_length=500)
+    title = models.CharField(max_length=10, null=True, blank=True)
+    url = models.CharField(max_length=500, null=True, blank=True)
     start_date = models.DateTimeField(default=timezone.now)
     end_date = models.DateTimeField(default=timezone.now)
 
