@@ -17,12 +17,13 @@ class Member(models.Model):
         return self.name
 
 class Recruit(models.Model):
+    title = models.CharField(max_length=10)
     url = models.CharField(max_length=500)
     start_date = models.DateTimeField(default=timezone.now)
     end_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.url
+        return self.title
 
 class Founded(models.Model):
     name = models.CharField(max_length=100)
