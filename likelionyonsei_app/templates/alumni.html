@@ -291,7 +291,9 @@
     {% if member.photo %}
     <img class="card-img-top" src="{{member.photo.url}}" alt="Card image cap">
     {% else %}
-    <img class="card-img-top" src="{% static '멋사로고.png' %}">
+    <div style="width:17vw;height:17vw;display: flex;justify-content: center;">
+      <img style="width:15vw;height:16vw;margin: auto 0;" src="{% static '멋사로고.png' %}">
+    </div>
     {% endif %}
     <div class="card-body">
       <div class="card-title">{{member.name}}</div>
