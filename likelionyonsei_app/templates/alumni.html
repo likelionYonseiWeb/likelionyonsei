@@ -27,7 +27,7 @@
     }
     .card-img-top {
       height: 17vw;
-      width: 17vw;
+      max-width: 17vw;
     }
     .card-body {
       height:11vw;
@@ -303,7 +303,9 @@
   <a data-bs-toggle="modal" data-bs-target="#exampleModal-{{member.id}}" style="margin:auto">
   <div class="card">
     {% if member.photo %}
-    <img class="card-img-top" src="{{member.photo.url}}" alt="Card image cap">
+    <div style="width:17vw;height:17vw;display: flex;justify-content: center;">
+      <img class="card-img-top" src="{{member.photo.url}}" alt="Card image cap">
+    </div>
     {% else %}
     <div style="width:17vw;height:17vw;display: flex;justify-content: center;">
       <img style="width:15vw;height:16vw;margin: auto 0;" src="{% static '멋사로고.png' %}">
@@ -317,7 +319,9 @@
   <!-- 구성원 나열 모바일 버전 -->
   <div  class="card_mob">
     {% if member.photo %}
-    <img style="height: 54vw;width: 54vw" src="{{member.photo.url}}" alt="Card image cap">
+    <div style="height: 54vw;width: 54vw;display: flex;justify-content: center;">
+      <img style="height: 54vw;max-width: 54vw" src="{{member.photo.url}}" alt="Card image cap">
+    </div>
     {% else %}
     <div style="height: 54vw;width: 54vw;display: flex;justify-content: center;">
       <img src="{% static '멋사로고.png' %}" style="height: 52vw;width: 48vw;margin: auto 0;">
