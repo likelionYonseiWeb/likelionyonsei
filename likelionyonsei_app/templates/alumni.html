@@ -305,7 +305,9 @@
     {% if member.photo %}
     <img style="height: 54vw;width: 54vw" src="{{member.photo.url}}" alt="Card image cap">
     {% else %}
-    <img src="{% static '멋사로고.png' %}"  style="height: 54vw;width: 54vw">
+    <div style="height: 54vw;width: 54vw;display: flex;justify-content: center;">
+      <img src="{% static '멋사로고.png' %}" style="height: 52vw;width: 48vw;margin: auto 0;">
+    </div>
     {% endif %}
     <div style="height:31vw; padding:4.3vw; background-color: rgba(165, 162, 162, 0.1);">
       <div style="font-weight: 600; font-size: 5vw; font-family: 'Noto Sans KR', sans-serif;">{{member.name}}</div>
