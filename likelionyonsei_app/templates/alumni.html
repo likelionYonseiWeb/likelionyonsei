@@ -110,6 +110,20 @@
     #modal-com {
       border: 0;
     }
+    .close-pc {
+      width:1.85vw;
+      height: 1.8vw;
+      margin-right: 1vw;
+      margin-bottom: 2vw;
+      color:white;
+    }
+    .close-pc:after {display: inline-block;
+    content: "\00d7";
+    font-size:2.5vw;
+    z-index:10;
+    width:2vw;
+    height:2vw;
+  }
 @media all and (min-width: 601px) {
   #intro_mob, .card_mob, #modal-mob {display: none;}
 }
@@ -321,7 +335,7 @@
         <div class="modal-content" id="modal-com">
           <div class="modal-header" style="color:#F39926;background-color:black;font-size:1.7vw;font-weight: bold;font-family: 'Noto Sans KR', sans-serif;">
             <div class="modal-title" id="exampleModalLabel" style="margin-left:1vw;">{{page}}기 {{member.name}}</div>
-            <img src="{% static 'cancel.png' %}" style="width:1.85vw; height: 1.8vw;margin-right: 1vw;" type="button" data-bs-dismiss="modal" aria-label="Close">
+            <div class="close-pc" type="button" data-bs-dismiss="modal" aria-label="Close"></div>
           </div>
           <div class="modal-body" style="padding: 1.8vw 2.2vw 2.5vw 2.2vw">
               {% if member.photo %}
