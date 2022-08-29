@@ -11,7 +11,6 @@ class Member(models.Model):
     moto = models.CharField(max_length=20)
     detail1 = models.TextField()
     detail2 = models.TextField()
-    order = models.PositiveIntegerField(default=1)
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
