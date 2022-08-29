@@ -12,7 +12,7 @@ def home(request):
 
     founded_list = Founded.objects.order_by('?')
     company_list = Company.objects.order_by('?')
-    project_list = Project.objects.order_by('-created_at')
+    project_list = Project.objects.order_by('-number', 'name')
 
     ctx = {
         'founded_form':founded_form, 
