@@ -29,7 +29,7 @@ def alumni(request):
     latest_num = all_members[0].number
     page = request.GET.get('page', latest_num)
     page = int(page or latest_num)
-    members = Member.objects.filter(number=page).order_by('order')
+    members = Member.objects.filter(number=page).order_by('-status', 'name')
     member_form = MemberForm()
     ctx = {
         'members':members, 

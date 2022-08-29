@@ -5,13 +5,20 @@ from django.utils import timezone
 # Create your models here.
 
 class Member(models.Model):
+    STATUS_CHOICES = (
+        (0, '일반 구성원'),
+        (1, '운영진'),
+        (2, '부대표'),
+        (3, '대표'),
+    )
+
     name = models.CharField(max_length=5)
     number = models.PositiveIntegerField(default=1)
     photo = models.ImageField(null=True, blank=True)
     moto = models.CharField(max_length=20)
     detail1 = models.TextField()
     detail2 = models.TextField()
-    order = models.PositiveIntegerField(default=1)
+    status = models.SmallIntegerField(choices = STATUS_CHOICES, default=0)
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

@@ -28,7 +28,7 @@ class MemberForm(forms.ModelForm):
             'moto': '한줄소개',
             'detail1': '자기소개',
             'detail2': '멋사 활동을 통해 얻은 것',
-            'order': '글 순서',
+            'status': '직책',
         }
         exclude = ('created_at',)
 
