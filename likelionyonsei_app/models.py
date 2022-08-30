@@ -57,6 +57,7 @@ class Project(models.Model):
     detail = models.CharField(max_length=15)
     logo = models.ImageField(null=True, blank=True)
     url = models.CharField(max_length=500, null=True, blank=True)
+    member = models.CharField(max_length=500, null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

@@ -764,7 +764,7 @@
     <script>
         $( document ).ready( function() {
             $( '.slider' ).slick( {
-                autoplay: true,
+                autoplay:true,
                 autoplaySpeed: 1000,
                 slidesToShow: 3,
                 slidesToScroll: 1,
@@ -772,7 +772,15 @@
                 nextArrow:"<img class='a-right control-c next slick-next' src='{% static 'arrow-right.png' %}' style='width:3vw; height:3vw;'>",
             } );
         } );
-        
+
+        $(document).ready(function () 
+        {
+            $('.project_back').hover(function(){
+                $(this).css('opacity','1');
+            }, function() {
+                $(this).css('opacity','0');
+            });
+        });
     </script>
 
     <style>
@@ -793,9 +801,21 @@
             height: 28.8vw;
             width: 15vw;
             box-shadow: 0px 0px 1.5vw rgba(0, 0, 0, 0.16);
+            position: relative;
         }
         a:hover {color: inherit;}
-
+        .project_back {
+            opacity:0;
+            width:100%;
+            height:100%;
+            border-radius: 1vw;
+            top:0;
+            left:0;
+            position: absolute;
+            background-color:white;
+            padding: 2.5vw 4.2vw;
+            overflow-y: auto;
+        }
     </style>
   
     <div class="slider">
@@ -805,6 +825,7 @@
                 <a href="{{project.url}}" style="display:flex; flex-direction:column;" target="_blank">
                 {% else %}
                 {% endif %}
+                <div class="project_front">
                     <div style="text-align: center;font-family: Arial;font-weight: bold; font-size: 2.2vw;padding: 3.7vw 1vw 2.4vw 1vw;">
                         {{project.name}}
                     </div>
@@ -818,6 +839,11 @@
                     <div style="text-align: center;font-family: 'Noto Sans KR', sans-serif;font-size: 1.3vw;padding: 2.5vw 1.5vw 3vw 1.5vw;color:rgb(105, 105, 105);">
                         {{project.detail}}
                     </div>
+                </div>
+                <div class="project_back">
+                    <div style="color:#F39926;font-size:2.5vw;text-align:center;font-weight:bold;font-family: 'sans-serif';margin-bottom: 1vw;">{{project.number}}기</div>
+                    <div style="font-size:2vw;text-align: center;word-break: keep-all;font-weight: bold; line-height: 3.3vw;"><span style="color:#F39926">팀장 </span>{{project.member}}</div>
+                </div>
                 </a>
             </div>    
         {% endfor %}
@@ -852,7 +878,7 @@
     <style>
         .slider1 {
             width: 55vw;
-            margin: 6vw 3vw 4vw 3vw;
+            margin: 6vw 4vw 4vw 4vw;
             padding: 0 3vw;
         }
         .project_content_mob {

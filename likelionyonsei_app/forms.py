@@ -73,5 +73,6 @@ class ProjectForm(forms.ModelForm):
             'detail': '프로젝트 소개',
             'logo': '프로젝트 로고',
             'url': 'URL',
+            'member':'팀원',
         }
         exclude = ('created_at',)
