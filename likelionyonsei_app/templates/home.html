@@ -232,9 +232,7 @@
 
 <!-- 모바일 버전 -->
 <div id="part1_mob">
-    <video preload="metadata" poster="{% static '로딩썸네일.png' %}" muted autoplay playsinline webkit-playsinline loop style="width:100%;z-index: -2;position: relative;display: table-cell;">
-        <source src="{% static '노트북_mob2.mp4' %}" type="video/mp4" style="background-color: transparent; width: 100%;">
-        <strong>Your browser does not support the video tag</strong>    
+    <video src="{% static '노트북_mob2.mp4' %}" preload="metadata" poster="{% static '로딩썸네일.png' %}" muted autoplay playsinline loop style="width:100%;z-index: -2;position: relative;display: table-cell;">
     </video>
     <div style="position:absolute; top:26vw; margin-top:2.8vw;width: 100%;">
         <div style="margin-left: 9vw;">
@@ -338,42 +336,15 @@
     </script>
 </div>
 
-<!-- 창업/취업 회사 목록 추가 -->
+<!-- 회사 목록 추가 -->
 {% if user.is_authenticated %}
-    <div style="display: flex; justify-content:center;">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#foundedModal" style="margin: 5vw 2vw 0 2vw;">
-            창업 목록 추가
-        </button>
+    <div style="display: flex; justify-content:center;margin-top: 2vw;">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#companyModal" style="margin: 5vw 2vw 0 2vw;">
             취업 목록 추가
         </button>    
     </div>
 
-    <!-- 창업 회사 추가 -->
-    <div class="modal fade" id="foundedModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content" style="color:black;">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">창업 목록 추가</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="{% url 'add_founded' %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="modal-body">
-                    <table>
-                        {{founded_form.as_table}}
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">추가하기</button>
-                </div>
-            </form>
-        </div>
-        </div>
-    </div>
-
-    <!-- 취업 회사 추가 -->
+    <!-- 회사 추가 -->
     <div class="modal fade" id="companyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content" style="color:black;">
@@ -405,82 +376,21 @@
         <hr style="border:1px solid rgb(80, 80, 80);flex-grow:1; margin-top: 2vw;">
     </div>
     
-    <!-- 창업/취업 회사 목록 -->
-    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <script>
-        $( document ).ready( function() {
-            $( '.slide' ).slick( {
-                slidesToShow: 4,
-                slidesToScroll: 1,
-                prevArrow:"<img class='a-left control-c prev slick-prev' src='{% static 'arrow-left.png' %}' style='width:2.5vw; height:2.5vw;margin-left:4vw;'>",
-                nextArrow:"<img class='a-right control-c next slick-next' src='{% static 'arrow-right.png' %}' style='width:2.5vw; height:2.5vw;margin-right:4vw;'>",
-            } );
-        } );
-        
-    </script>
-
-    <style>
-        .company {
-            width:100%;
-            height: 20vw;
-        }
-        .slide {
-            margin: 3vw 2vw;
-            padding: 0 6vw;
-            height: 10vw;
-        }
-        .company_content {
-            display:flex;
-            justify-content:center;
-            height: 10vw;
-            width: 15vw;
-            margin: 0 1.5vw;
-        }
-        a:hover {color: inherit;}
-
-    </style>
-    
-    <div style="margin-top:4.5vw;">
-        <!-- 창업 회사 목록 -->
-        <div style="color:#F39926;font-family:Arial;font-size:2.5vw;font-weight: bolder;text-align: center;">FOUND</div>
-        <div class="slide">
-            {% for found in founded_list %}
-            {% if found.url %}
-            <a href="{{found.url}}" target="_blank">
-            {% else %}
-            {% endif %}
-                <div class="company_content">
-                    {% if found.logo %}
-                    <img src="{{found.logo.url}}" style="max-width:15vw; height: 10vw;">
-                    {% else %}
-                    <img src="{% static '멋사로고.png' %}" style="max-width:15vw; height: 10vw;">
-                    {% endif %}
-                </div>  
-            </a>  
-            {% endfor %}
-        </div>
-
-        <!-- 취업 회사 목록 -->
-        <div style="color:#F39926;font-family:Arial;font-size:2.5vw;font-weight: bolder;text-align: center;margin-top: 6.5vw;">WORK IN</div>
-        <div class="slide">
-            {% for company in company_list %}
-            {% if company.url %}
-            <a href="{{company.url}}" target="_blank">
-            {% else %}
-            {% endif %}
-                <div class="company_content">
-                    {% if company.logo %}
-                    <img src="{{company.logo.url}}" style="max-width:15vw; height: 10vw;">
-                    {% else %}
-                    <img src="{% static '멋사로고.png' %}" style="max-width:15vw; height: 10vw;">
-                    {% endif %}
-                </div>  
-            </a>  
-            {% endfor %}
-        </div>
+    <div style="display:flex;flex-direction:column;flex-wrap:wrap;height: 48vw;width:80vw; overflow:auto;margin: 3.5vw auto 5vw auto;">
+        {% for company in company_list %}
+        {% if found.url %}
+        <a href="{{company.url}}" target="_blank">
+        {% else %}
+        {% endif %}
+            <div style="margin: 6.5vw 3.3vw 0 3.3vw;width: 20vw;height: 15vw;display: flex;justify-content: center;">
+                {% if company.logo %}
+                <img src="{{company.logo.url}}" style="max-width:20vw; height: 12vw;">
+                {% else %}
+                <img src="{% static '멋사로고.png' %}" style="max-width:20vw; height: 12vw;">
+                {% endif %}
+            </div>  
+        </a>  
+        {% endfor %}
     </div>
 </div>
 
@@ -491,79 +401,22 @@
         <hr style="border:1px solid rgb(80,80,80);flex-grow:1; margin-top: 4.8vw;">
     </div>
     
-    <!-- 창업/취업 회사 목록 -->
-    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <script>
-        $( document ).ready( function() {
-            $( '.slide_mob' ).slick( {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                prevArrow:"<img class='a-left control-c prev slick-prev' src='{% static 'arrow-left.png' %}' style='width:7vw; height:7vw;'>                                                               ",
-                nextArrow:"<img class='a-right control-c next slick-next' src='{% static 'arrow-right.png' %}' style='width:7vw; height:7vw;'>",
-            } );
-        } );
-    </script>
-
-    <style>
-        .slide_mob {
-            margin: 4vw 12vw;
-            padding: 0 5vw;
-            height: 24vw;
-        }
-        .company_content_mob {
-            height: 24vw;
-            width: 48vw;
-        }
-        a:hover {color: inherit;}
-        video {
-            -webkit-filter: contrast(101%); 
-            filter: contrast(101%);
-        }
-    </style>
-    
-    <div style="margin-top:13.5vw;">
-        <!-- 창업 회사 목록 -->
-        <div style="color:#F39926;font-family:Arial;font-size:6vw;font-weight: bolder;text-align: center;">FOUND</div>
-        <div class="slide_mob">
-            {% for found in founded_list %}
-            <div class="company_content_mob">
-                {% if found.url %}
-                <a href="{{found.url}}" target="_blank" style="display:flex;justify-content:center;max-width: 48vw;margin: 0 auto;">
+    <!-- 취업 회사 목록 -->
+    <div style="display:flex;flex-direction:column;flex-wrap:wrap;height: 85vw;width:80vw; overflow:auto;margin: 8vw auto 3.5vw auto;">
+        {% for company in company_list %}
+        {% if company.url %}
+        <a href="{{company.url}}" target="_blank">
+        {% else %}
+        {% endif %}
+            <div style="margin: 12vw 3.3vw 0 3.3vw;width: 35vw;height: 27vw;display: flex;justify-content: center;">
+                {% if company.logo %}
+                <img src="{{company.logo.url}}" style="max-width:35vw; height: 23vw;">
                 {% else %}
+                <img src="{% static '멋사로고.png' %}" style="max-width:35vw; height: 23vw;">
                 {% endif %}
-                    <div>
-                        {% if found.logo %}
-                        <img src="{{found.logo.url}}" style="max-width:48vw; height: 24vw;">
-                        {% else %}
-                        <img src="{% static '멋사로고.png' %}" style="max-width:48vw; height: 24vw;">
-                        {% endif %}
-                    </div>
-                </a>
             </div>  
-            {% endfor %}
-        </div>
-
-        <!-- 취업 회사 목록 -->
-        <div style="margin-top:16vw;color:#F39926;font-family:Arial;font-size:6vw;font-weight: bolder;text-align: center;">WORK IN</div>
-        <div class="slide_mob">
-            {% for company in company_list %}
-            <div class="company_content_mob">
-                {% if company.url %}
-                <a href="{{company.url}}" target="_blank" style="display:flex;justify-content:center;width: 50vw;margin: 0 auto;">
-                {% else %}
-                {% endif %}
-                    {% if company.logo %}
-                    <img src="{{company.logo.url}}" style="max-width:50vw; height: 25vw;">
-                    {% else %}
-                    <img src="{% static '멋사로고.png' %}" style="max-width:50vw; height: 25vw;">
-                    {% endif %}
-                </a>  
-            </div>  
-            {% endfor %}
-        </div>
+        </a>  
+        {% endfor %}
     </div>
 </div>
 

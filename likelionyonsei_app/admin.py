@@ -5,6 +5,5 @@ from .models import *
 
 admin.site.register(Member)
 admin.site.register(Recruit)
-admin.site.register(Founded)
 admin.site.register(Company)
 admin.site.register(Project)

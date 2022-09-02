@@ -33,14 +33,6 @@ class Recruit(models.Model):
     def __str__(self):
         return self.title
 
-class Founded(models.Model):
-    name = models.CharField(max_length=100)
-    logo = models.ImageField(null=True, blank=True)
-    url = models.CharField(max_length=500)
-    created_at = models.DateTimeField(default=timezone.now)
-
-    def __str__(self):
-        return self.name
 
 class Company(models.Model):
     name = models.CharField(max_length=100)

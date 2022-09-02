@@ -32,20 +32,6 @@ class MemberForm(forms.ModelForm):
         }
         exclude = ('created_at',)
 
-class FoundedForm(forms.ModelForm):
-    class Meta:
-        model = Founded
-        fields = '__all__'
-        widgets = {
-            'url': forms.TextInput(attrs={'placeholder':'https://'},),
-        }
-        labels = {
-            'name': '회사명',
-            'logo': '회사로고',
-            'url': 'URL',
-        }
-        exclude = ('created_at',)
-
 class CompanyForm(forms.ModelForm):
     class Meta:
         model = Company
