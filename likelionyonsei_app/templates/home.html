@@ -378,7 +378,7 @@
     
     <div style="display:flex;flex-direction:column;flex-wrap:wrap;height: 48vw;width:80vw; overflow:auto;margin: 3.5vw auto 5vw auto;">
         {% for company in company_list %}
-        {% if found.url %}
+        {% if company.url %}
         <a href="{{company.url}}" target="_blank">
         {% else %}
         {% endif %}
