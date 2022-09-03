@@ -232,7 +232,9 @@
 
 <!-- 모바일 버전 -->
 <div id="part1_mob">
-    <video src="{% static '노트북_mob2.mp4' %}" preload="metadata" poster="{% static '로딩썸네일.png' %}" muted autoplay playsinline loop style="width:100%;z-index: -2;position: relative;display: table-cell;">
+    <video preload="metadata" poster="{% static '로딩썸네일.png' %}" muted autoplay playsinline loop style="width:100%;z-index: -2;position: relative;display: table-cell;">
+        <source src="{% static '노트북_mob2.mp4' %}" type="video/mp4" style="width: 100%;">
+        <strong>Your browser does not support the video tag</strong>
     </video>
     <div style="position:absolute; top:26vw; margin-top:2.8vw;width: 100%;">
         <div style="margin-left: 9vw;">
