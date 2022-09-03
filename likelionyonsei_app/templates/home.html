@@ -340,7 +340,7 @@
 {% if user.is_authenticated %}
     <div style="display: flex; justify-content:center;margin-top: 2vw;">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#companyModal" style="margin: 5vw 2vw 0 2vw;">
-            취업 목록 추가
+            회사 목록 추가
         </button>    
     </div>
 
@@ -349,7 +349,7 @@
         <div class="modal-dialog">
         <div class="modal-content" style="color:black;">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">취업 목록 추가</h5>
+            <h5 class="modal-title" id="exampleModalLabel">회사 목록 추가</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{% url 'add_company' %}" method="post" enctype="multipart/form-data">
