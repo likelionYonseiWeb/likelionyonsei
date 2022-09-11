@@ -18,6 +18,7 @@ from django.urls import path
 from likelionyonsei_app.views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +29,7 @@ urlpatterns = [
     path('add_member/', add_member, name="add_member"),
     path('add_company/', add_company, name="add_company"),
     path('add_project/', add_project, name="add_project"),
+    path('robots.txt/', TemplateView.as_view(template_name="robots.txt", content_type='text/plain')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'likelionyonsei_app.views.page_not_found'
