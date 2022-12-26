@@ -37,6 +37,7 @@ urlpatterns = [
     path('add_project/', add_project, name="add_project"),
     path('robots.txt/', TemplateView.as_view(template_name="robots.txt", content_type='text/plain')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+    path('delete/',delete, name="delete"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'likelionyonsei_app.views.page_not_found'
